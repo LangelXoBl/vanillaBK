@@ -25,6 +25,8 @@
 		8B7505FE2A29755C00937D09 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7505FD2A29755C00937D09 /* UserController.swift */; };
 		8B7506002A29759700937D09 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7505FF2A29759700937D09 /* UserViewModel.swift */; };
 		8B7506022A29784600937D09 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506012A29784600937D09 /* UsersView.swift */; };
+		8B7506042A297A9900937D09 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506032A297A9900937D09 /* Movement.swift */; };
+		8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506052A297C4A00937D09 /* CentralBankAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		8B7505FD2A29755C00937D09 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		8B7505FF2A29759700937D09 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		8B7506012A29784600937D09 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		8B7506032A297A9900937D09 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		8B7506052A297C4A00937D09 /* CentralBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				8B7505EB2A29728C00937D09 /* MovementsView.swift */,
+				8B7506032A297A9900937D09 /* Movement.swift */,
+				8B7506052A297C4A00937D09 /* CentralBankAPI.swift */,
 			);
 			path = Movements;
 			sourceTree = "<group>";
@@ -350,6 +356,8 @@
 				8B7505F52A29728C00937D09 /* Imageview.swift in Sources */,
 				8B7506002A29759700937D09 /* UserViewModel.swift in Sources */,
 				8B7505F72A29728C00937D09 /* TransferView.swift in Sources */,
+				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
+				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,

@@ -98,5 +98,20 @@ struct MovementsView_Previews: PreviewProvider {
     static var previews: some View {
         MovementsView()
         //Movement()
+        //Login()
+    }
+}
+
+
+// parte del ejemplo de fecth
+
+struct Login: View{
+    var body: some View{
+        VStack{
+            Text("HOLa").onAppear(){CentralBankAPI()
+                .fetchMovements{( movements) in
+                    print("Moviemientos")
+                    print(movements)}}
+        }
     }
 }
