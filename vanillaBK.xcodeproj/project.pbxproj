@@ -27,6 +27,7 @@
 		8B7506022A29784600937D09 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506012A29784600937D09 /* UsersView.swift */; };
 		8B7506042A297A9900937D09 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506032A297A9900937D09 /* Movement.swift */; };
 		8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506052A297C4A00937D09 /* CentralBankAPI.swift */; };
+		8BE370CE2A2EBFF300F8AD34 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370CD2A2EBFF300F8AD34 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		8B7506012A29784600937D09 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		8B7506032A297A9900937D09 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		8B7506052A297C4A00937D09 /* CentralBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankAPI.swift; sourceTree = "<group>"; };
+		8BE370CD2A2EBFF300F8AD34 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				8B7505EB2A29728C00937D09 /* MovementsView.swift */,
 				8B7506032A297A9900937D09 /* Movement.swift */,
 				8B7506052A297C4A00937D09 /* CentralBankAPI.swift */,
+				8BE370CD2A2EBFF300F8AD34 /* Login.swift */,
 			);
 			path = Movements;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
 				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
+				8BE370CE2A2EBFF300F8AD34 /* Login.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,

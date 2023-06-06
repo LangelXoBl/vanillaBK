@@ -11,8 +11,9 @@ import Foundation
 
 class CentralBankAPI: ObservableObject{
     @Published var movements = [movement]()
+    //@Published var movementsList: [movement]=[]
     
-    let url_base = "http://172.16.105.17:3000/movements"
+    let url_base = "http://172.16.105.13:3000/movements"
     
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response
@@ -48,16 +49,51 @@ class CentralBankAPI: ObservableObject{
                 
                 DispatchQueue.main.async {
                     do {
+                        
                         let movements = try JSONDecoder().decode(
                             [movement].self, from: data
                         )
+                        self.movements = movements
                         // aqui se manda el responde
                         completion(movements)
                     }catch{
-                        print("Error in dispatch")
+                        print("Error in dispatch", error.localizedDescription)
                     }
                 }
             }
         }.resume() // se usa para decirle a quien lo consuma que se completo la tarea
+    }
+    
+    func login( request: LoginReq) async throws -> LoginRes?{
+        //var result : LoginRes?
+        
+        guard let url = URL(string: url_base) else{
+            print("URL no valido")
+            return nil
+        }
+        
+        var urlReq = URLRequest(url: url)
+        urlReq.httpMethod = "POST"
+        urlReq.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let encoder = JSONEncoder()
+        
+        do {
+            urlReq.httpBody = try encoder.encode(request)
+        } catch {
+            print("Fallo al conectar")
+            return nil
+        }
+        
+        let (data, response) = try await URLSession.shared.data(for: urlReq)
+        
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 201 else {
+            return nil
+        }
+        
+        let loginResponse = try JSONDecoder().decode(LoginRes.self, from: data)
+        
+        return loginResponse
     }
 }
