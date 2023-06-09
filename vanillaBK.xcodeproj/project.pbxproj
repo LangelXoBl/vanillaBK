@@ -329,9 +329,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B7505F02A29728C00937D09 /* profile-user.png in Resources */,
-				8B7505F22A29728C00937D09 /* Preview Assets.xcassets in Resources */,
-				8B7505F12A29728C00937D09 /* Assets.xcassets in Resources */,
+				8B5888622A256B6F0019678B /* profile-user.png in Resources */,
+				130AB0F92A1C45AD00FD0B69 /* Preview Assets.xcassets in Resources */,
+				8B5888642A256B6F0019678B /* Preview Assets.xcassets in Resources */,
+				8B5888612A256B6F0019678B /* Assets.xcassets in Resources */,
+				130AB0F62A1C45AD00FD0B69 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,10 +369,14 @@
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,
 				130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */,
+				8B5888602A256B6F0019678B /* TransferView.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,
 				130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */,
 				8B7505FC2A2974FC00937D09 /* UserModel.xcdatamodeld in Sources */,
 				8B7506022A29784600937D09 /* UsersView.swift in Sources */,
+				8B58886C2A25772E0019678B /* UserModel.xcdatamodeld in Sources */,
+				8B5888722A2584450019678B /* UsersView.swift in Sources */,
+				8B58885F2A256B6F0019678B /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
