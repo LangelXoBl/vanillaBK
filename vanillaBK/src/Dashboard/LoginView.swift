@@ -1,32 +1,46 @@
 import SwiftUI
 
+
 struct LoginView: View {
-    @State var Username: String = ""
-    @State var Password: String = ""
-    @State var keep: Bool = false
+    @State private var username:
+    String = ""
+    @State private var password:
+    String = ""
+    @State private var keep:
+    Bool = false
     var body: some View {
-        NavigationView {
+        NavigationView{
             VStack {
                 Text("Login")
-                TextField("username", text: $Username)
-                TextField("Password", text: $Password)
-                NavigationLink(destination: MainView()) {
-                    Text("login")
+                TextField("username", text: $username)
+                TextField("username", text: $password)
+                Toggle(isOn: $keep){
+                    Text("Mantener session")
                 }
-                Toggle(isOn: $keep) {
-                    Text("Mantener sesion")
-                }
+                NavigationLink(destination:MainView() ){
+                    Text("Login")
+                }.simultaneousGesture(TapGesture().onEnded{
+                    print("tab")
+                    UserDefaults.standard.set(username, forKey: "user")
+                    UserDefaults.standard.set(password, forKey: "pass")
+                    
+                })
             }
         }
     }
 }
 
-struct MainView: View{
-    var body: some View{
-        VStack {
+struct MainView: View {
+    @State var user = UserDefaults.standard.string(forKey: "user") ?? "NA"
+    @State var pass = UserDefaults.standard.string(forKey: "pass") ?? "NA"
+    var body: some View {
+        VStack{
             Text("Data View")
-            Text("Data")
-            Text("Data 2")
+            Text(user)
+            Text(pass)
+        }.onAppear{
+            user = UserDefaults.standard.string(forKey: "user") ?? "NA"
+            pass = UserDefaults.standard.string(forKey: "pass") ?? "NA"
         }
     }
 }
