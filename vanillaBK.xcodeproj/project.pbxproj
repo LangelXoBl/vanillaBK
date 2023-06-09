@@ -27,6 +27,7 @@
 		8B7506022A29784600937D09 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506012A29784600937D09 /* UsersView.swift */; };
 		8B7506042A297A9900937D09 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506032A297A9900937D09 /* Movement.swift */; };
 		8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506052A297C4A00937D09 /* CentralBankAPI.swift */; };
+		8BF424752A32C05600A5C7F7 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF424742A32C05600A5C7F7 /* NavView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		8B7506012A29784600937D09 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		8B7506032A297A9900937D09 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		8B7506052A297C4A00937D09 /* CentralBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankAPI.swift; sourceTree = "<group>"; };
+		8BF424742A32C05600A5C7F7 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8BF424732A32C04300A5C7F7 /* Nav */,
 				8B7505F92A2974D700937D09 /* User */,
 				8B7505E12A29728C00937D09 /* images */,
 				8B7505E32A29728C00937D09 /* Assets.xcassets */,
@@ -220,6 +223,14 @@
 				8B7506012A29784600937D09 /* UsersView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		8BF424732A32C04300A5C7F7 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				8BF424742A32C05600A5C7F7 /* NavView.swift */,
+			);
+			path = Nav;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +367,7 @@
 				8B7505F52A29728C00937D09 /* Imageview.swift in Sources */,
 				8B7506002A29759700937D09 /* UserViewModel.swift in Sources */,
 				8B7505F72A29728C00937D09 /* TransferView.swift in Sources */,
+				8BF424752A32C05600A5C7F7 /* NavView.swift in Sources */,
 				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
 				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,

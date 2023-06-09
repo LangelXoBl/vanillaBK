@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var auth:
+    Bool = false
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if(!auth){
+                LoginView(isAuth: $auth)
+            }else{
+                NavView()
+            }
         }
         .padding()
     }

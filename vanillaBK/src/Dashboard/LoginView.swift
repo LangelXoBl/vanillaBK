@@ -8,8 +8,8 @@ struct LoginView: View {
     String = ""
     @State private var keep:
     Bool = false
+    @Binding var isAuth: Bool
     var body: some View {
-        NavigationView{
             VStack {
                 Text("Login")
                 TextField("username", text: $username)
@@ -17,17 +17,16 @@ struct LoginView: View {
                 Toggle(isOn: $keep){
                     Text("Mantener session")
                 }
-                NavigationLink(destination:MainView() ){
-                    Text("Login")
-                }.simultaneousGesture(TapGesture().onEnded{
+                Button("Login"){
                     print("tab")
+                    isAuth=true
                     UserDefaults.standard.set(username, forKey: "user")
                     UserDefaults.standard.set(password, forKey: "pass")
-                    
-                })
+                }
+                
             }
         }
-    }
+    
 }
 
 struct MainView: View {
@@ -47,6 +46,7 @@ struct MainView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        //LoginView()
+        MainView()
     }
 }
