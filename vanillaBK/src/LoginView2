@@ -1,0 +1,61 @@
+import SwiftUI
+
+struct ContentView: View {
+    @State private var username = "" //usuario
+    @State private var password = "" //contraseña
+    @State private var wrongUsername = 0 //Cuadro en rojo
+    @State private var wrongPassword = 0 //Cuadro en rojo
+    @State private var showingLoginScreen = false
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color.blue
+                    .ignoresSafeArea()
+                Circle()
+                    .scale(1.7)
+                    .foregroundColor(.white.opacity(0.15))
+                Circle()
+                    .scale(1.35)
+                    .foregroundColor(.white)
+                
+                VStack{
+                    Text("VanillaBK")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                    TextField("Usuario", text: $username)
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .border(.red, width: CGFloat(wrongUsername))
+                    
+                    TextField("Contraseña", text: $password)
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .border(.red, width: CGFloat(wrongPassword))
+                    
+                    Button("Iniciar Sesion") {
+                        //Autentificacion del usuario
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 300, height: 50)
+                    .background(Color.green)
+                    .cornerRadius(10)
+                    
+                
+                }
+            }
+        }
+        .navigationBarHidden(true)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
