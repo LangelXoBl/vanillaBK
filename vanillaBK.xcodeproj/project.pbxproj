@@ -27,6 +27,10 @@
 		8B7506022A29784600937D09 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506012A29784600937D09 /* UsersView.swift */; };
 		8B7506042A297A9900937D09 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506032A297A9900937D09 /* Movement.swift */; };
 		8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506052A297C4A00937D09 /* CentralBankAPI.swift */; };
+		8BE46C722A37E17300AEDB1C /* CentralBankApi.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */; };
+		8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C732A37E19C00AEDB1C /* Movement.example.swift */; };
+		8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */; };
+		8BE46C792A37E24000AEDB1C /* Login.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C782A37E24000AEDB1C /* Login.example.swift */; };
 		8BF424752A32C05600A5C7F7 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF424742A32C05600A5C7F7 /* NavView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +75,10 @@
 		8B7506012A29784600937D09 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		8B7506032A297A9900937D09 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		8B7506052A297C4A00937D09 /* CentralBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankAPI.swift; sourceTree = "<group>"; };
+		8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankApi.example.swift; sourceTree = "<group>"; };
+		8BE46C732A37E19C00AEDB1C /* Movement.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.example.swift; sourceTree = "<group>"; };
+		8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsView.example.swift; sourceTree = "<group>"; };
+		8BE46C782A37E24000AEDB1C /* Login.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.example.swift; sourceTree = "<group>"; };
 		8BF424742A32C05600A5C7F7 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,8 +157,8 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8BE46C6F2A37E0DE00AEDB1C /* Examples */,
 				8BF424732A32C04300A5C7F7 /* Nav */,
-				8B7505F92A2974D700937D09 /* User */,
 				8B7505E12A29728C00937D09 /* images */,
 				8B7505E32A29728C00937D09 /* Assets.xcassets */,
 				8B7505E42A29728C00937D09 /* Preview Content */,
@@ -223,6 +231,34 @@
 				8B7506012A29784600937D09 /* UsersView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		8BE46C6F2A37E0DE00AEDB1C /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				8B7505F92A2974D700937D09 /* User */,
+				8BE46C772A37E22900AEDB1C /* UserDefaults */,
+				8BE46C702A37E14500AEDB1C /* Api */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		8BE46C702A37E14500AEDB1C /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */,
+				8BE46C732A37E19C00AEDB1C /* Movement.example.swift */,
+				8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		8BE46C772A37E22900AEDB1C /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				8BE46C782A37E24000AEDB1C /* Login.example.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		8BF424732A32C04300A5C7F7 /* Nav */ = {
@@ -364,17 +400,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE46C722A37E17300AEDB1C /* CentralBankApi.example.swift in Sources */,
 				8B7505F52A29728C00937D09 /* Imageview.swift in Sources */,
 				8B7506002A29759700937D09 /* UserViewModel.swift in Sources */,
 				8B7505F72A29728C00937D09 /* TransferView.swift in Sources */,
 				8BF424752A32C05600A5C7F7 /* NavView.swift in Sources */,
 				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
+				8BE46C792A37E24000AEDB1C /* Login.example.swift in Sources */,
 				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
+				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,
 				130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */,
+				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,
 				130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */,
 				8B7505FC2A2974FC00937D09 /* UserModel.xcdatamodeld in Sources */,
@@ -539,6 +579,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"vanillaBK/src/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = userLogin;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -567,6 +608,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"vanillaBK/src/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = userLogin;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

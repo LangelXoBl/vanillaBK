@@ -1,15 +1,21 @@
+//
+//  Login.example.swift
+//  vanillaBK
+//
+//  Created by imac_01 on 12/06/23.
+//
+
 import SwiftUI
 import LocalAuthentication
 
-
-struct LoginView: View {
+struct Login_example: View {
     @State private var username:
     String = ""
     @State private var password:
     String = ""
     @State private var keep:
     Bool = false
-    @Binding var isAuth: Bool
+    //@Binding var isAuth: Bool
     var context = LAContext() // contexto la usar el feceID
     func authenticate() {
         var error: NSError?
@@ -18,7 +24,7 @@ struct LoginView: View {
                 success, authenticateError in
                 if (success){
                     print("User auth Success")
-                    isAuth = true
+                    //isAuth = true
                 } else if ((authenticateError) != nil){
                     print("Auth failed")
                     print(authenticateError?.localizedDescription ?? "No error")
@@ -32,7 +38,6 @@ struct LoginView: View {
     
     var body: some View {
             VStack {
-                Text("Vanilla BK")
                 Text("Login")
                 TextField("username", text: $username)
                 TextField("username", text: $password)
@@ -40,7 +45,6 @@ struct LoginView: View {
                     Text("Mantener session")
                 }
                 Button("Login"){
-                    print("tab")
                     authenticate()
                     UserDefaults.standard.set(username, forKey: "user")
                     UserDefaults.standard.set(password, forKey: "pass")
@@ -51,7 +55,7 @@ struct LoginView: View {
     
 }
 
-struct MainView: View {
+struct MainView_example: View {
     @State var user = UserDefaults.standard.string(forKey: "user") ?? "NA"
     @State var pass = UserDefaults.standard.string(forKey: "pass") ?? "NA"
     var body: some View {
@@ -66,9 +70,11 @@ struct MainView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct Login_example_Previews: PreviewProvider {
+    @State private var isAuth:
+    Bool = false
     static var previews: some View {
-        //LoginView()
-        MainView()
+        Login_example()
+        //MainView_example()
     }
 }

@@ -12,6 +12,7 @@ struct ContentView: View {
     Bool = false
     var body: some View {
         VStack {
+            
             if(!auth){
                 LoginView(isAuth: $auth)
             }else{
