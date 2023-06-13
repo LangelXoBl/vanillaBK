@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Dashboardview: View {
+    @State var name = UserDefaults.standard.string(forKey: "user") ?? "Anonimo"
     var body: some View {
         
         VStack {
@@ -16,7 +17,7 @@ struct Dashboardview: View {
             VStack  {
                 
                 Image("VanillaBk").resizable().frame(width: 210, height: 160).background(Color.orange                             )
-                Text("Hola UserName")
+                Text(name)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.black)

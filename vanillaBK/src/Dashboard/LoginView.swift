@@ -4,11 +4,13 @@ import LocalAuthentication
 
 struct LoginView: View {
     @State private var username:
-    String = ""
+    String = UserDefaults.standard.string(forKey: "user") ?? ""
     @State private var password:
-    String = ""
+    String = UserDefaults.standard.string(forKey: "pass") ?? ""
     @State private var keep:
-    Bool = false
+    Bool = UserDefaults.standard.bool(forKey: "save")
+    @State private var faceId:
+    Bool = UserDefaults.standard.bool(forKey: "faceId")
     @Binding var isAuth: Bool
     var context = LAContext() // contexto la usar el feceID
     func authenticate() {
@@ -35,15 +37,28 @@ struct LoginView: View {
                 Text("Vanilla BK")
                 Text("Login")
                 TextField("username", text: $username)
-                TextField("username", text: $password)
+                TextField("password", text: $password)
                 Toggle(isOn: $keep){
                     Text("Mantener session")
                 }
+                Toggle(isOn: $faceId){
+                    Text("Iniciar con id")
+                }
                 Button("Login"){
                     print("tab")
-                    authenticate()
-                    UserDefaults.standard.set(username, forKey: "user")
-                    UserDefaults.standard.set(password, forKey: "pass")
+                    isAuth = true
+                    UserDefaults.standard.set(keep, forKey: "save")
+                    
+                    if(keep){
+                        UserDefaults.standard.set(faceId, forKey: "faceId")
+                        UserDefaults.standard.set(username, forKey: "user")
+                        UserDefaults.standard.set(password, forKey: "pass")}
+                    if(!faceId){
+                        UserDefaults.standard.set(faceId, forKey: "faceId")}
+                }.onAppear(){
+                    isAuth = false
+                    if(faceId){
+                        authenticate()}
                 }
                 
             }
