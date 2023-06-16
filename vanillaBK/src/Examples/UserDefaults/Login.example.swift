@@ -46,6 +46,7 @@ struct Login_example: View {
                 }
                 Button("Login"){
                     authenticate()
+                    
                     UserDefaults.standard.set(username, forKey: "user")
                     UserDefaults.standard.set(password, forKey: "pass")
                 }

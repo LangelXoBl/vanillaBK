@@ -12,6 +12,8 @@
 		130AB1032A1C45AD00FD0B69 /* vanillaBKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB1022A1C45AD00FD0B69 /* vanillaBKTests.swift */; };
 		130AB10D2A1C45AD00FD0B69 /* vanillaBKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */; };
 		130AB10F2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */; };
+		8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290D2A3BE3E10047016D /* NotificationHandler.swift */; };
+		8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290F2A3BE6F00047016D /* LoginApiExample.swift */; };
 		8B7505F02A29728C00937D09 /* profile-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7505E22A29728C00937D09 /* profile-user.png */; };
 		8B7505F12A29728C00937D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7505E32A29728C00937D09 /* Assets.xcassets */; };
 		8B7505F22A29728C00937D09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7505E52A29728C00937D09 /* Preview Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		130AB1082A1C45AD00FD0B69 /* vanillaBKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vanillaBKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITests.swift; sourceTree = "<group>"; };
 		130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B56290D2A3BE3E10047016D /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		8B56290F2A3BE6F00047016D /* LoginApiExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiExample.swift; sourceTree = "<group>"; };
 		8B7505E22A29728C00937D09 /* profile-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-user.png"; sourceTree = "<group>"; };
 		8B7505E32A29728C00937D09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B7505E52A29728C00937D09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -154,6 +158,14 @@
 			path = vanillaBKUITests;
 			sourceTree = "<group>";
 		};
+		8B56290C2A3BE3C50047016D /* LoginExample */ = {
+			isa = PBXGroup;
+			children = (
+				8B56290D2A3BE3E10047016D /* NotificationHandler.swift */,
+			);
+			path = LoginExample;
+			sourceTree = "<group>";
+		};
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +248,7 @@
 		8BE46C6F2A37E0DE00AEDB1C /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				8B56290C2A3BE3C50047016D /* LoginExample */,
 				8B7505F92A2974D700937D09 /* User */,
 				8BE46C772A37E22900AEDB1C /* UserDefaults */,
 				8BE46C702A37E14500AEDB1C /* Api */,
@@ -249,6 +262,7 @@
 				8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */,
 				8BE46C732A37E19C00AEDB1C /* Movement.example.swift */,
 				8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */,
+				8B56290F2A3BE6F00047016D /* LoginApiExample.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -408,6 +422,7 @@
 				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
 				8BE46C792A37E24000AEDB1C /* Login.example.swift in Sources */,
 				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
+				8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
 				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
@@ -417,6 +432,7 @@
 				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,
 				130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */,
+				8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */,
 				8B7505FC2A2974FC00937D09 /* UserModel.xcdatamodeld in Sources */,
 				8B7506022A29784600937D09 /* UsersView.swift in Sources */,
 			);

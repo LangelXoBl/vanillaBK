@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TransferView: View {
-        @State private var name: String = ""
-        
+        @State private var importe: String = ""
+        @State private var cuentaDestino: String = ""
+        @State private var concepto: String = ""
+        let ntf = NotificationHandler(title: "Transferencia bancaria", subititle: "Exitosa", body: "Se ha realizado la transferencia desde tu banca de preferencia")
         var body: some View {
+           
             VStack{
                 
                 Text("Transferencia Bancaria ").font(.title)
@@ -24,25 +27,31 @@ struct TransferView: View {
                 Spacer()
                 
                 Text("Importe").padding(.leading, -170)
-                TextField("Monto $ ", text: $name).background(Color.white)
+                TextField("Monto $ ", text: $importe).background(Color.white)
                     .padding(20)
                     .border(.gray, width:1)
                     .cornerRadius(10)
                 Text("Cuenta destino")
                     .padding(.leading, -170)
-                TextField("Cuenta de banco", text: $name)
+                TextField("Cuenta de banco", text: $cuentaDestino)
                     .padding(20)
                     .border(.gray)
                     .cornerRadius(10)
                 Text("Concepto")
                     .padding(.leading, -170)
-                TextField("Descripción de tranferencia", text: $name)
+                TextField("Descripción de tranferencia", text: $concepto)
                     .padding(20)
                     .border(.gray)
                     .cornerRadius(10)
-                Spacer()
+                Button("Enviar")
+                {
+                    ntf.body = "Envio de $ \(importe) Exitoso, con el concepto: \(concepto)"
+                    ntf.showNotification()
+                  print("enviado")
+                }
                
             }.padding(20)
+           
     }
 }
 

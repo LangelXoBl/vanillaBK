@@ -13,6 +13,8 @@ struct LoginView: View {
     Bool = UserDefaults.standard.bool(forKey: "faceId")
     @Binding var isAuth: Bool
     var context = LAContext() // contexto la usar el feceID
+    let ntf = NotificationHandler(title: "Hola", subititle: "Notification", body: "Soy una notificacion")
+    
     func authenticate() {
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
@@ -45,17 +47,20 @@ struct LoginView: View {
                     Text("Iniciar con id")
                 }
                 Button("Login"){
+                    
                     print("tab")
                     isAuth = true
                     UserDefaults.standard.set(keep, forKey: "save")
                     
                     if(keep){
-                        UserDefaults.standard.set(faceId, forKey: "faceId")
-                        UserDefaults.standard.set(username, forKey: "user")
-                        UserDefaults.standard.set(password, forKey: "pass")}
+                       UserDefaults.standard.set(faceId, forKey: "faceId")
+                       UserDefaults.standard.set(username, forKey: "user")
+                       UserDefaults.standard.set(password, forKey: "pass")}
                     if(!faceId){
-                        UserDefaults.standard.set(faceId, forKey: "faceId")}
+                    UserDefaults.standard.set(faceId, forKey: "faceId")}
                 }.onAppear(){
+                     //pide permiso
+                    
                     isAuth = false
                     if(faceId){
                         authenticate()}

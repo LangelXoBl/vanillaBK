@@ -14,3 +14,9 @@ struct MovementExample: Codable, Identifiable {
     var des_account: String
     var description: String
 }
+
+
+struct LoginReqExample: Codable {
+    var username: String
+    var password: String
+}

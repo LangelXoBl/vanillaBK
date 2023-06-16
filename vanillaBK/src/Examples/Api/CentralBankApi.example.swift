@@ -58,4 +58,39 @@ class CentralBankAPIExample: ObservableObject{
             }
         }.resume() // se usa para decirle a quien lo consuma que se completo la tarea
     }
+    
+    
+    func login( request: LoginReqExample) async throws -> LoginReqExample?{
+            //var result : LoginRes?
+            
+            guard let url = URL(string: url_base) else{
+                print("URL no valido")
+                return nil
+            }
+            
+            var urlReq = URLRequest(url: url)
+            urlReq.httpMethod = "POST"
+            urlReq.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let encoder = JSONEncoder()
+            
+            do {
+                urlReq.httpBody = try encoder.encode(request)
+            } catch {
+                print("Fallo al conectar")
+                return nil
+            }
+            
+            let (data, response) = try await URLSession.shared.data(for: urlReq)
+            
+            guard let response = response as? HTTPURLResponse,
+                  response.statusCode == 201 else {
+                return nil
+            }
+            
+            let loginResponse = try JSONDecoder().decode(LoginReqExample.self, from: data)
+            
+            return loginResponse
+        }
+    
 }
