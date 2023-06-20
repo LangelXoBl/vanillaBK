@@ -42,17 +42,26 @@ struct UserProfile: View {
                         }.padding(20)
                         
                         HStack{
-                            Card(atributo :"data", data:"test")
-                            Card(atributo :"data", data:"test")
-                        }
+                            HStack{
+                                Card(atributo :"data", data:"test")
+                                Card(atributo :"data", data:"test")
+                            }.padding(11)
+                        }.background(Color .blue).cornerRadius(10)
                         
-                        Bottom(atributo :"phone", data:"AksqQhadydg7TRdfgUIJH", icon: "phone")
-                        Bottom(atributo :"email", data:"AksqQhadydg7TRdfgUIJH", icon: "mail")
-                        Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH", icon: "key")
+                        VStack{
+                            
+                            VStack{
+                                Bottom(atributo :"phone", data:"AksqQhadydg7TRdfgUIJH", icon: "phone")
+                                Bottom(atributo :"email", data:"AksqQhadydg7TRdfgUIJH", icon: "mail")
+                                Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH", icon: "key")
+                            }.padding(11)
+                        }.background(Color .blue).cornerRadius(10)
+                        Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up")
+                        
                         
                     }
                     Spacer()
-                    
+                
                 }
                 Spacer()
                 
