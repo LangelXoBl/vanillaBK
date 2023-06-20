@@ -29,6 +29,8 @@
 		8B7506022A29784600937D09 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506012A29784600937D09 /* UsersView.swift */; };
 		8B7506042A297A9900937D09 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506032A297A9900937D09 /* Movement.swift */; };
 		8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7506052A297C4A00937D09 /* CentralBankAPI.swift */; };
+		8B9074602A41273600062C4F /* MovementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90745F2A41273600062C4F /* MovementCardView.swift */; };
+		8B9074672A41319C00062C4F /* MovementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9074662A41319C00062C4F /* MovementDetailView.swift */; };
 		8BE46C722A37E17300AEDB1C /* CentralBankApi.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */; };
 		8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C732A37E19C00AEDB1C /* Movement.example.swift */; };
 		8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */; };
@@ -79,6 +81,8 @@
 		8B7506012A29784600937D09 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		8B7506032A297A9900937D09 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		8B7506052A297C4A00937D09 /* CentralBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankAPI.swift; sourceTree = "<group>"; };
+		8B90745F2A41273600062C4F /* MovementCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementCardView.swift; sourceTree = "<group>"; };
+		8B9074662A41319C00062C4F /* MovementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDetailView.swift; sourceTree = "<group>"; };
 		8BE46C712A37E17300AEDB1C /* CentralBankApi.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankApi.example.swift; sourceTree = "<group>"; };
 		8BE46C732A37E19C00AEDB1C /* Movement.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.example.swift; sourceTree = "<group>"; };
 		8BE46C752A37E1B000AEDB1C /* MovementsView.example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsView.example.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8B9074612A412A7000062C4F /* Models */,
 				8BE46C6F2A37E0DE00AEDB1C /* Examples */,
 				8BF424732A32C04300A5C7F7 /* Nav */,
 				8B7505E12A29728C00937D09 /* images */,
@@ -211,9 +216,11 @@
 		8B7505EA2A29728C00937D09 /* Movements */ = {
 			isa = PBXGroup;
 			children = (
+				8B90745E2A41270300062C4F /* MovementComponents */,
 				8B7505EB2A29728C00937D09 /* MovementsView.swift */,
 				8B7506032A297A9900937D09 /* Movement.swift */,
 				8B7506052A297C4A00937D09 /* CentralBankAPI.swift */,
+				8B9074662A41319C00062C4F /* MovementDetailView.swift */,
 			);
 			path = Movements;
 			sourceTree = "<group>";
@@ -243,6 +250,21 @@
 				8B7506012A29784600937D09 /* UsersView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		8B90745E2A41270300062C4F /* MovementComponents */ = {
+			isa = PBXGroup;
+			children = (
+				8B90745F2A41273600062C4F /* MovementCardView.swift */,
+			);
+			path = MovementComponents;
+			sourceTree = "<group>";
+		};
+		8B9074612A412A7000062C4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8BE46C6F2A37E0DE00AEDB1C /* Examples */ = {
@@ -424,6 +446,7 @@
 				8B7506062A297C4A00937D09 /* CentralBankAPI.swift in Sources */,
 				8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
+				8B9074672A41319C00062C4F /* MovementDetailView.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
 				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
@@ -431,6 +454,7 @@
 				130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */,
 				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,
+				8B9074602A41273600062C4F /* MovementCardView.swift in Sources */,
 				130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */,
 				8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */,
 				8B7505FC2A2974FC00937D09 /* UserModel.xcdatamodeld in Sources */,
