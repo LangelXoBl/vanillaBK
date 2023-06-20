@@ -10,45 +10,58 @@ import SwiftUI
 struct UserProfile: View {
     let gradient = Gradient(colors: [.blue, .purple])
     var body: some View {
-        
-        VStack{
-            HStack{
-                Spacer()
-                VStack{
-                    VStack {
+        NavigationView(){
+            
+            VStack{
+                HStack{
+                    Spacer()
+                    VStack{
+                        VStack {
+                            
+                            Image("profile-user")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 200, height: 200)
+                                .cornerRadius(200)
+                                .clipShape(Circle())
+                                .clipped()
+                                .padding(.top, 44)
+                        }.frame(maxWidth: .infinity).background(Color .blue).cornerRadius(40)
                         
-                        Image("profile-user")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 200, height: 200)
-                            .cornerRadius(200)
-                            .clipShape(Circle())
-                            .clipped()
-                            .padding(.top, 44)
-                    }.frame(maxWidth: .infinity).background(Color .blue).cornerRadius(40)
-                    
-                    
-                    Text("User Profile").foregroundColor(.black).italic().bold().padding(.top, 8)
-                    HStack{
-                        Card(atributo :"Phone", data:"9983191783")
-                        Card(atributo :"Email", data:"alguien@gmail.com")
+                        
+                        HStack{
+                            Text("User Profile").foregroundColor(.black).italic().bold().padding(.top, 8)
+                            Spacer()
+                            
+                            NavigationLink(destination:EditUserData()){
+                                Image(systemName: "pencil").resizable()
+                                                                .aspectRatio(contentMode: .fill)
+                                                                .frame(width: 25, height: 25).colorMultiply(.black)
+                            }
+                            
+                        }.padding(20)
+                        
+                        HStack{
+                            Card(atributo :"data", data:"test")
+                            Card(atributo :"data", data:"test")
+                        }
+                        
+                        Bottom(atributo :"phone", data:"AksqQhadydg7TRdfgUIJH", icon: "phone")
+                        Bottom(atributo :"email", data:"AksqQhadydg7TRdfgUIJH", icon: "mail")
+                        Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH", icon: "key")
+                        
                     }
-                    
-                    Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
-                    Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
-                    Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
-                   
+                    Spacer()
                     
                 }
                 Spacer()
                 
-            }
-            Spacer()
-            
-             
-          
-           
-        }//.background(LinearGradient(gradient : gradient, startPoint: .top,endPoint: .bottom))
+                 
+              
+               
+            }//.background(LinearGradient(gradient : gradient, startPoint: .top,endPoint: .bottom))
+        }
+       
         
        
     }
@@ -82,16 +95,21 @@ struct Card: View {
 struct Bottom: View {
     var texto: String
     var dta : String
+    var icon :String
     
-    init(atributo :String, data: String){
+    init(atributo :String, data: String, icon:String){
         self.texto = atributo
         self.dta = data
+        self.icon = icon
     }
     var body: some View {
        
         HStack{
             
             HStack{
+                Image(systemName: icon).resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 15, height: 15)
                 Text(texto).font(.system(size: 14))
                 Spacer()
                 Text(dta).font(.system(size: 14))

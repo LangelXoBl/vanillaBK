@@ -12,6 +12,7 @@
 		130AB1032A1C45AD00FD0B69 /* vanillaBKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB1022A1C45AD00FD0B69 /* vanillaBKTests.swift */; };
 		130AB10D2A1C45AD00FD0B69 /* vanillaBKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */; };
 		130AB10F2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */; };
+		4AF9B5EC2A413482008E73B3 /* EditUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9B5EB2A413482008E73B3 /* EditUserData.swift */; };
 		8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290D2A3BE3E10047016D /* NotificationHandler.swift */; };
 		8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290F2A3BE6F00047016D /* LoginApiExample.swift */; };
 		8B7505F02A29728C00937D09 /* profile-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7505E22A29728C00937D09 /* profile-user.png */; };
@@ -62,6 +63,7 @@
 		130AB1082A1C45AD00FD0B69 /* vanillaBKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vanillaBKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITests.swift; sourceTree = "<group>"; };
 		130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4AF9B5EB2A413482008E73B3 /* EditUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserData.swift; sourceTree = "<group>"; };
 		8B56290D2A3BE3E10047016D /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		8B56290F2A3BE6F00047016D /* LoginApiExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiExample.swift; sourceTree = "<group>"; };
 		8B7505E22A29728C00937D09 /* profile-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-user.png"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				8B7505EF2A29728C00937D09 /* UserProfile.swift */,
+				4AF9B5EB2A413482008E73B3 /* EditUserData.swift */,
 			);
 			path = userProfile;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,
 				130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */,
+				4AF9B5EC2A413482008E73B3 /* EditUserData.swift in Sources */,
 				8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */,
 				8B7505FC2A2974FC00937D09 /* UserModel.xcdatamodeld in Sources */,
 				8B7506022A29784600937D09 /* UsersView.swift in Sources */,
