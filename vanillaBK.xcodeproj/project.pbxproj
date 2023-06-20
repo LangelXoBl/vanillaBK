@@ -12,6 +12,7 @@
 		130AB1032A1C45AD00FD0B69 /* vanillaBKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB1022A1C45AD00FD0B69 /* vanillaBKTests.swift */; };
 		130AB10D2A1C45AD00FD0B69 /* vanillaBKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */; };
 		130AB10F2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */; };
+		15FC3F932A412DDF00211C40 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC3F922A412DDF00211C40 /* RegisterView.swift */; };
 		8B56290E2A3BE3E10047016D /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290D2A3BE3E10047016D /* NotificationHandler.swift */; };
 		8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B56290F2A3BE6F00047016D /* LoginApiExample.swift */; };
 		8B7505F02A29728C00937D09 /* profile-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7505E22A29728C00937D09 /* profile-user.png */; };
@@ -62,6 +63,7 @@
 		130AB1082A1C45AD00FD0B69 /* vanillaBKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vanillaBKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITests.swift; sourceTree = "<group>"; };
 		130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		15FC3F922A412DDF00211C40 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8B56290D2A3BE3E10047016D /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		8B56290F2A3BE6F00047016D /* LoginApiExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiExample.swift; sourceTree = "<group>"; };
 		8B7505E22A29728C00937D09 /* profile-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-user.png"; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 			path = vanillaBKUITests;
 			sourceTree = "<group>";
 		};
+		15FC3F912A412CD800211C40 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				15FC3F922A412DDF00211C40 /* RegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		8B56290C2A3BE3C50047016D /* LoginExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				15FC3F912A412CD800211C40 /* Register */,
 				8BE46C6F2A37E0DE00AEDB1C /* Examples */,
 				8BF424732A32C04300A5C7F7 /* Nav */,
 				8B7505E12A29728C00937D09 /* images */,
@@ -425,6 +436,7 @@
 				8B5629102A3BE6F00047016D /* LoginApiExample.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
+				15FC3F932A412DDF00211C40 /* RegisterView.swift in Sources */,
 				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,
