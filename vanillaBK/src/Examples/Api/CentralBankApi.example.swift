@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 class CentralBankAPIExample: ObservableObject{
     @Published var movements = [MovementExample]()
     
