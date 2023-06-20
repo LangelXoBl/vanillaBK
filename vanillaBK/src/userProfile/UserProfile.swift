@@ -15,17 +15,27 @@ struct UserProfile: View {
             HStack{
                 Spacer()
                 VStack{
-                    Image("profile-user")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 200, height: 200)
+                    VStack {
+                        
+                        Image("profile-user")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 200, height: 200)
                             .cornerRadius(200)
-                        .clipShape(Circle())
-                        .clipped()
-                        .padding(.top, 44)
-                    Text("User Profile").foregroundColor(.white).italic().bold().padding(.top, 8)
-                    Bottom(atributo :"Phone", data:"9983191783")
-                    Bottom(atributo :"Email", data:"alguien@gmail.com")
+                            .clipShape(Circle())
+                            .clipped()
+                            .padding(.top, 44)
+                    }.frame(maxWidth: .infinity).background(Color .blue).cornerRadius(40)
+                    
+                    
+                    Text("User Profile").foregroundColor(.black).italic().bold().padding(.top, 8)
+                    HStack{
+                        Card(atributo :"Phone", data:"9983191783")
+                        Card(atributo :"Email", data:"alguien@gmail.com")
+                    }
+                    
+                    Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
+                    Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
                     Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH")
                    
                     
@@ -38,10 +48,35 @@ struct UserProfile: View {
              
           
            
-        }.background(LinearGradient(gradient : gradient, startPoint: .top,endPoint: .bottom))
+        }//.background(LinearGradient(gradient : gradient, startPoint: .top,endPoint: .bottom))
         
        
     }
+}
+
+struct Card: View {
+    var texto: String
+    var dta : String
+    
+    init(atributo :String, data: String){
+        self.texto = atributo
+        self.dta = data
+    }
+    var body: some View {
+       
+        HStack{
+            
+            VStack{
+                Text(texto).font(.system(size: 14))
+                Text(dta).font(.system(size: 14))
+            }.padding(5)
+            Spacer()
+            
+        }.padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
+        
+    }
+    
+    
 }
 
 struct Bottom: View {
@@ -56,16 +91,14 @@ struct Bottom: View {
        
         HStack{
             
-            VStack{
-                HStack{
-                    Text(texto)
-                    Spacer()
-                    Text(dta)
-                }
-            }.padding(10)
+            HStack{
+                Text(texto).font(.system(size: 14))
+                Spacer()
+                Text(dta).font(.system(size: 14))
+            }
             Spacer()
             
-        }.padding(20).background(Color .black).foregroundColor(.white)
+        }.padding(25).background(Color .black).foregroundColor(.white).cornerRadius(20)
         
     }
     
