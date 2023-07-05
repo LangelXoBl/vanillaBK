@@ -13,68 +13,54 @@ struct Dashboardview: View {
         
         VStack {
             
-                   
-            VStack  {
+            ZStack {
+                HStack{
+                    Text("hello")
+                }.frame(width: 200.0, height: 200.0).padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
                 
-                Image("VanillaBk").resizable().frame(width: 210, height: 160).background(Color.orange                             )
-                Text(name)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.black)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(10)
-                    .shadow(radius: 20)
-                    .padding(.all)
-                
-                Text("Tu saldo actual es de:")
-                    .fontWeight(.bold)
+                HStack{
+                    Card(atributo :"data", data:"test")
                     
-                Text("$3, 457.23").padding()
-                Spacer()
+                }.frame(width: 200.0, height: 100.0).padding(10).background(Color .blue).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:170)
                 
-            }
-            HStack{
-                Text("¿Qué vamos a hacer hoy?")
-                    .font(.title)
-                    .padding(.all)
-            }
-            HStack{
-                Button(action: {
-                    print("Movimientos")
-                }) {
-                    Text("Consultar")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10 )
-                }
-                Button(action: {
-                    print("Mi perfil")
-                }) {
-                    Text("Envíar")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10 )
-                }
-                Button(action: {
-                    print("Mi perfil")
-                }) {
-                    Text("Ajustes")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10 )
-                }
-            }
-        }
-        
                }
+            Spacer()
+            
+            }
+            
+          
+        }
+    }
+    
+
+
+
+struct CardView: View {
+    var texto: String
+    var dta : String
+    
+    init(atributo :String, data: String){
+        self.texto = atributo
+        self.dta = data
+    }
+    var body: some View {
+       
+        HStack{
+            
+            VStack{
+                Text(texto).font(.system(size: 14))
+                Text(dta).font(.system(size: 14))
+            }.padding(5)
+            Spacer()
+            
+        }.padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
+        
+    }
+    
     
 }
+
+
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         Dashboardview()
