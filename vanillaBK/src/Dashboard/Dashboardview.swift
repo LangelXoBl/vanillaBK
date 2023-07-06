@@ -11,31 +11,82 @@ struct Dashboardview: View {
     @State var name = UserDefaults.standard.string(forKey: "user") ?? "Anonimo"
     var body: some View {
         
-        VStack {
-            
-            ZStack {
-                HStack{
-                    Text("hello")
-                }.frame(width: 200.0, height: 200.0).padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
-                
-                HStack{
-                    Card(atributo :"data", data:"test")
+        NavigationView()
+        {
+            VStack {
+                ZStack {
+                    HStack{
+                        Text("Hola ***").offset(x:0,y:-90).font(.system(size: 19) .italic() ).foregroundColor(.red)
+                    }
+                    HStack{
+                        CardView(atributo :"Balance: ", data:"$1500",cta: 1291)
+                        Image("money-bag").resizable() .frame(width: 100, height:100)
+                    }.frame(width: 320.0, height: 200.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20)
                     
-                }.frame(width: 200.0, height: 100.0).padding(10).background(Color .blue).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:170)
+                    VStack{
+                        Text("Realizar trasferencia")
+                        NavigationLink(destination: MovementsView()){
+                            
+                            
+                            HStack{
+                                Image("money").resizable() .frame(width: 70, height:70)
+                                Image("transfers").resizable() .frame(width: 70, height:70)
+                                Image("money").resizable() .frame(width: 70, height:70)
+                                Image("transfers").resizable() .frame(width: 70, height:70)
+                            }
+                        }
+                        
+                    }.frame(width: 320.0, height: 100.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:190)
+                    
+                    VStack{
+                        Text("Realizar trasferencia")
+                        MovementsView().frame(width: 320.0, height: 270.0).cornerRadius(30)
+                    }.frame(width: 320.0, height: 270.0).padding(17).background(Color .blue.opacity(0.5)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:410)
+                }
+                Spacer()
                 
-               }
-            Spacer()
-            
-            }
-            
-          
+                
+            }.padding(30).background(Color .blue.opacity(0.2))
         }
+          
+    }
     }
     
 
 
 
 struct CardView: View {
+    var texto: String
+    var dta : String
+    var ctaa : Int
+    
+    init(atributo :String, data: String, cta: Int){
+        self.texto = atributo
+        self.dta = data
+        self.ctaa = cta
+    }
+    var body: some View {
+       
+        HStack{
+           
+            VStack{
+                Text(texto).font(.system(size: 14) .italic())
+                Spacer()
+                Text(dta).font(.system(size: 19))
+                Spacer()
+                Text(String(ctaa)).font(.system(size: 14))
+            }.padding(5)
+            Spacer()
+            
+        }.padding(25).foregroundColor(.white)
+        
+    }
+    
+    
+}
+
+
+struct CardViewTrasfers: View {
     var texto: String
     var dta : String
     
@@ -47,13 +98,9 @@ struct CardView: View {
        
         HStack{
             
-            VStack{
-                Text(texto).font(.system(size: 14))
-                Text(dta).font(.system(size: 14))
-            }.padding(5)
-            Spacer()
+          
             
-        }.padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
+        }
         
     }
     

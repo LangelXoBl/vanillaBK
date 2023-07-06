@@ -47,21 +47,11 @@ struct MovementsView: View {
         movements(monto: -100, fecha: "2023-02-13", concepto: "compra de pan", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
         movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
     ]
-    @State private var search:
-    String = ""
+    
     var body: some View {
         NavigationView{
             VStack{
-                //titulo
-                Text("Movimientos").font(.title)
-                
-                //Buscador
-                HStack{
-                    TextField("Buscar por concepto",text:
-                                $search).font(.caption).padding(10).border(.black)
-                    Image(systemName: "magnifyingglass")
-                }.padding(.horizontal,40)
-                
+               
                 //lista
                 List(data){movement in
                     NavigationLink(destination: DetailMovementView(item:movement)){
