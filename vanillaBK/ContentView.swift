@@ -22,7 +22,7 @@ struct ContentView: View {
             }else{
                 Button("Logout test"){
                     auth = false
-                    var save = UserDefaults.standard.bool(forKey: "save")
+                    let save = UserDefaults.standard.bool(forKey: "save")
                     print(save)
                                                           if(!save){
                         UserDefaults.standard.set("", forKey: "user")

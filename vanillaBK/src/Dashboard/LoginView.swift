@@ -1,6 +1,17 @@
 import SwiftUI
 import LocalAuthentication
 
+struct LogginButton: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 320, height: 50)
+            .foregroundColor(.black)
+            .background(
+                configuration.isPressed ? Color(red: 0.5098039215686274, green: 0.5803921568627451, blue: 0.7686274509803922 , opacity: 1.0) : Color(red: 0.5098039215686274, green: 0.5803921568627451, blue: 0.7686274509803922)
+            ).cornerRadius(14)
+    }
+}
 
 struct LoginView: View {
     @State private var username:
@@ -35,40 +46,76 @@ struct LoginView: View {
     }
     
     var body: some View {
+        NavigationView{
             VStack {
-                Text("Vanilla BK")
-                Text("Login")
-                TextField("username", text: $username)
-                TextField("password", text: $password)
+                Text("Vanilla BK").font(.system(size: 60)).fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .lineLimit(14)
+            
+                HStack{
+                    TextField("username", text: $username)
+                        .padding(15)
+                        .frame(width: 320, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(14)
+                }.padding(4)
+                HStack{
+                    TextField("password", text: $password)
+                        .padding(15)
+                        .frame(width: 320, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(14)
+                }.padding(4)
                 Toggle(isOn: $keep){
                     Text("Mantener session")
-                }
+                }.padding(.horizontal)
                 Toggle(isOn: $faceId){
                     Text("Iniciar con id")
-                }
+                }.padding(.horizontal)
                 Button("Login"){
                     
                     print("tab")
-                    isAuth = true
+                    
+                    Task{
+                        do {
+                            let rs = try await APIBK().login(user: loginReq(phone: username, password: password))
+                            if let result = rs?.message {
+                                print(result)
+                            }
+                            if let token = rs?.access_token {
+                                print(token)
+                                isAuth = true
+                            }
+                        }catch{
+                            print("Erro al cread")
+                        }
+                        
+                    }
+                    
                     UserDefaults.standard.set(keep, forKey: "save")
                     
                     if(keep){
-                       UserDefaults.standard.set(faceId, forKey: "faceId")
-                       UserDefaults.standard.set(username, forKey: "user")
-                       UserDefaults.standard.set(password, forKey: "pass")}
+                        UserDefaults.standard.set(faceId, forKey: "faceId")
+                        UserDefaults.standard.set(username, forKey: "user")
+                        UserDefaults.standard.set(password, forKey: "pass")}
                     if(!faceId){
-                    UserDefaults.standard.set(faceId, forKey: "faceId")}
-                }.onAppear(){
-                     //pide permiso
+                        UserDefaults.standard.set(faceId, forKey: "faceId")}
+                }.fontWeight(.bold)
+                    .padding(.top, 18.0)
+                    .buttonStyle(LogginButton()).onAppear(){
+                    //pide permiso
                     
                     isAuth = false
                     if(faceId){
                         authenticate()}
                 }
+                NavigationLink(destination: RegisterView()){
+                    Text("Register")
+                }
                 
             }
         }
-    
+    }
 }
 
 struct MainView: View {

@@ -21,6 +21,7 @@ struct UserResp: Codable {
     var status: String
     var data: DataRes?
     var message: String?
+    var errors: [Errors]?
     
 }
 
@@ -33,6 +34,21 @@ struct DataRes: Codable{
     var password: String
     var id_bank:Int
     var id: Int
+}
+
+struct Errors: Codable {
+    var property: String
+}
+
+struct loginReq: Codable {
+    var phone: String
+        var password: String
+}
+
+struct loginResp: Codable{
+    var status: String?
+    var access_token: String?
+    var message: String?
 }
 
 class APIBK: ObservableObject{
@@ -51,11 +67,32 @@ class APIBK: ObservableObject{
         }
         
         guard let response = response as? HTTPURLResponse,
-              response.statusCode == 201 else {
+              response.statusCode != 500 else {
             print("Error en la peticion")
             return nil}
         
+        if response.statusCode == 400 {
+            print("Erro en los datos")
+        }
+        
         let loginResponse = try JSONDecoder().decode(UserResp.self, from: data)
+        print(loginResponse)
+        return loginResponse
+    }
+    
+    
+    func login(user:loginReq) async throws -> loginResp?{
+        let response  = try await CentralBankAPI2().connectApi(path: "/auth/login", method: methodsHTTP.POST, body: user)
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode != 500 else {
+            print("Error en la peticion")
+            return nil}
+        let loginResponse = try JSONDecoder().decode(loginResp.self, from: data)
         print(loginResponse)
         return loginResponse
     }
