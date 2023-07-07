@@ -184,6 +184,7 @@
 			path = vanillaBKUITests;
 			sourceTree = "<group>";
 		};
+
 		43A2E2182A57A051002BBEFD /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +204,10 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+
 				43A2E2182A57A051002BBEFD /* API */,
 				8B9074682A4132EB00062C4F /* Register */,
+
 				8BE46C6F2A37E0DE00AEDB1C /* Examples */,
 				8BF424732A32C04300A5C7F7 /* Nav */,
 				8B7505E12A29728C00937D09 /* images */,
@@ -490,6 +493,7 @@
 				8B90746D2A4137AB00062C4F /* RegisterView.swift in Sources */,
 				8B7505FE2A29755C00937D09 /* UserController.swift in Sources */,
 				8B7505F42A29728C00937D09 /* LoginView.swift in Sources */,
+
 				8B90746A2A41330800062C4F /* ApiBK.swift in Sources */,
 				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,

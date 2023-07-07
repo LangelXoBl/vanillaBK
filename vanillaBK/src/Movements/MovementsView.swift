@@ -32,7 +32,7 @@ struct Movement: View{
                 Text("$"+String( movement.monto))
                 Text(movement.status==0 ?"Pendiente":"Completado")
             }
-        }.background(.gray).padding(.horizontal,40)
+        }.background(.white).padding(.horizontal,40)
     }
 }
 
@@ -40,22 +40,35 @@ struct MovementsView: View {
     var data=[
         movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),movements(monto: -100, fecha: "2023-02-13", concepto: "compra de coca", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
         movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de hamburguesa", icon: Image(systemName: "checkmark.circle.fill"), status: 1),
-        movements(monto: -100, fecha: "2023-02-13", concepto: "compra de sandia", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
-        ,movements(monto: -100, fecha: "2023-02-13", concepto: "compra de chettos", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1),
-        movements(monto: -100, fecha: "2023-02-13", concepto: "compra de pan", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
+        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de hamburguesa", icon: Image(systemName: "checkmark.circle.fill"), status: 1),
+        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de hamburguesa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
+
+    
     ]
     
     var body: some View {
         NavigationView{
             VStack{
-               
+
+                //titulo
+                Text("Movimientos").font(.title)
+                
+                //Buscador
+                HStack{
+                    TextField("Buscar por concepto",text:
+                                $search).padding(30)
+                        .frame(width: 320, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(14)
+                    Image(systemName: "magnifyingglass")
+                }.padding(6)
+                            
+
                 //lista
+                Spacer()
                 List(data){movement in
-                    NavigationLink(destination: DetailMovementView(item:movement)){
-                        HStack{
+                    Section(header: Text(movement.concepto)){
+                        HStack
                             movement.icon
                             VStack{
                                 Text(movement.fecha).foregroundColor(Color .black).font(.system(size: 14) .italic())
@@ -70,7 +83,8 @@ struct MovementsView: View {
                             .background(.blue.opacity(0.25))
                     }.scrollContentBackground(.hidden)
                 }
-            }}
+            }
+        }
     }
 }
 
