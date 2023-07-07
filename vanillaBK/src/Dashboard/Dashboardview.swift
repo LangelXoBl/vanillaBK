@@ -14,12 +14,12 @@ struct Dashboardview: View {
         NavigationView()
         {
             VStack {
+                
                 ZStack{
                     Text("Vanilla BK").foregroundColor(Color .blue).font(.system(size: 54) .italic()).padding(0.1).offset(x:0,y: -150)
+                   
                     ZStack {
-                        HStack{
-                            Text("Hola ***").offset(x:0,y:-90).font(.system(size: 19) .italic() ).foregroundColor(.red)
-                        }
+                        
                         HStack{
                             CardView(atributo :"Balance: ", data:"$1500",cta: 1291)
                             Image("money-bag").resizable() .frame(width: 100, height:100)
@@ -45,7 +45,20 @@ struct Dashboardview: View {
                             MovementsView().frame(width: 320.0, height: 270.0).cornerRadius(30)
                         }.frame(width: 320.0, height: 270.0).padding(17).background(Color .blue.opacity(0.5)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:420)
                     }
-                }
+                    
+                        
+                        
+                    HStack{
+                        
+                        NavigationLink(destination: UserProfile()){
+                            Text("! Hola soy un nombre de usuario ¡").foregroundColor(Color .white ).font(.system(size: 15)).italic()
+                            Image("user").resizable()
+                                .frame(width: 35, height:35)
+                        }.offset(x:0,y:-100)}
+
+                    }
+                    
+                
                 
                 Spacer()
                 

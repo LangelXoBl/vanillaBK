@@ -18,19 +18,13 @@ struct UserProfile: View {
                     VStack{
                         VStack {
                             
-                            Image("profile-user")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 200, height: 200)
-                                .cornerRadius(200)
-                                .clipShape(Circle())
-                                .clipped()
-                                .padding(.top, 44)
-                        }.frame(maxWidth: .infinity).background(Color .blue).cornerRadius(40)
+                            Text("Hola").font(.system(size: 25))
+                            Text(String(121233123)).font(.system(size: 27))
+                        }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
                         
                         
                         HStack{
-                            Text("User Profile").foregroundColor(.black).italic().bold().padding(.top, 8)
+                            Text("Edit profile").foregroundColor(.black).italic().bold().padding(.top, 8)
                             Spacer()
                             
                             NavigationLink(destination:EditUserData()){
@@ -55,7 +49,7 @@ struct UserProfile: View {
                                 Bottom(atributo :"email", data:"AksqQhadydg7TRdfgUIJH", icon: "mail")
                                 Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH", icon: "key")
                             }.padding(11)
-                        }.background(Color .blue).cornerRadius(10)
+                        }.background(Color .blue .opacity(0.6)).cornerRadius(10)
                         Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up")
                         
                         
@@ -68,7 +62,7 @@ struct UserProfile: View {
                  
               
                
-            }//.background(LinearGradient(gradient : gradient, startPoint: .top,endPoint: .bottom))
+            }.background(Color .blue .opacity(0.2))
         }
        
         
