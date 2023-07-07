@@ -1,73 +1,73 @@
 //
-//  ApiBK.swift
+//  API.swift
 //  vanillaBK
 //
-//  Created by imac_01 on 19/06/23.
+//  Created by IMac_01_Invitado on 06/07/23.
 //
 
 import Foundation
 
-struct UserReq: Codable {
-    var name: String
-    var lastname:String
-    var email: String
-    var rfc: String
-    var phone:String
-    var password: String
-    var id_bank:Int
-}
-
-struct UserResp: Codable {
-    var status: String
-    var data: DataRes?
-    var message: String?
+enum methodsHTTP {
+case GET, POST, PATCH, DELETE
     
+    var toString : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .GET: return "GET"
+        case .POST: return "POST"
+        case .PATCH: return "PATCH"
+        case .DELETE: return "DELETE"
+        }
+      }
 }
 
-struct DataRes: Codable{
-    var name: String
-    var lastname:String
-    var email: String
-    var rfc: String
-    var phone:String
-    var password: String
-    var id_bank:Int
-    var id: Int
-}
-
-class APIBK: ObservableObject{
+class CentralBankAPI2: ObservableObject{
     @Published var movements = [movement]()
     
-    let url_base = "https://5e01-187-188-58-190.ngrok-free.app/users"
+    let url_base = "https://5e01-187-188-58-190.ngrok-free.app"
     
-    func register( request: UserReq) async throws -> UserResp?{
-        
-        let response = try await CentralBankAPI2().connectApi(path: "/users", method: methodsHTTP.POST, body: request)
-        
-        // se destructura el response
-        guard let (data, response) = response else {
-            print("fue nil")
+    func connectApi<T: Encodable>(path: String, method:methodsHTTP , body: T)async throws -> (Data, URLResponse)? {
+        // se valida el url
+        guard let url = URL(string: url_base + path)
+        else {
+            print("Error en url")
             return nil
         }
+        // se prepara la peticion
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = method.toString
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let response = response as? HTTPURLResponse,
+        let encoder = JSONEncoder()
+        // se parsea el body
+        do {
+            urlRequest.httpBody = try encoder.encode(body)
+        } catch {
+            print("Fallo el parser")
+            return nil
+        }
+        // se hace la petición
+        let response = try await URLSession.shared.data(for: urlRequest)
+        print(response)
+        
+        // valida peticion pero no es necesario acerlo aqui
+        /*guard let response = response as? HTTPURLResponse,
               response.statusCode == 201 else {
             print("Error en la peticion")
-            return nil}
-        
-        let loginResponse = try JSONDecoder().decode(UserResp.self, from: data)
-        print(loginResponse)
-        return loginResponse
+            return nil
+        }*/
+        // retorna el response
+        return response
     }
     
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response
-    func fetchMovements(completion: @escaping([movement])->( ) ){
+    func fetchMovements()async throws -> HTTPURLResponse?{
         // similar a un tryCatch, se usa para validar el url (validaciones simples)
         guard let url = URL(string: url_base)
         else {
             print("URL no valido")
-            return
+            return nil
         }
         // se prepara el request
         let urlRequest = URLRequest(url: url)
@@ -98,12 +98,13 @@ class APIBK: ObservableObject{
                             [movement].self, from: data
                         )
                         // aqui se manda el responde
-                        completion(movements)
+                        
                     }catch{
                         print("Error in dispatch")
                     }
                 }
             }
         }.resume() // se usa para decirle a quien lo consuma que se completo la tarea
+        return nil
     }
 }
