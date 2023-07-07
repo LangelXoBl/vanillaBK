@@ -2,7 +2,9 @@
 //  RegisterView.swift
 //  vanillaBK
 //
+
 //  Created by IMAC 04 on 19/06/23.
+
 //
 
 import SwiftUI
@@ -98,8 +100,6 @@ struct RegisterView: View {
     }
         
 }
-
-
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()

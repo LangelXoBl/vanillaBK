@@ -1,20 +1,68 @@
 //
-//  CentralBankApi.example.swift
+//  ApiBK.swift
 //  vanillaBK
 //
-//  Created by imac_01 on 12/06/23.
+//  Created by imac_01 on 19/06/23.
 //
 
 import Foundation
- 
-class CentralBankAPIExample: ObservableObject{
-    @Published var movements = [MovementExample]()
+
+struct UserReq: Codable {
+    var name: String
+    var lastname:String
+    var email: String
+    var rfc: String
+    var phone:String
+    var password: String
+    var id_bank:Int
+}
+
+struct UserResp: Codable {
+    var status: String
+    var data: DataRes?
+    var message: String?
     
-    let url_base = "http://172.16.105.17:3000/movements"
+}
+
+struct DataRes: Codable{
+    var name: String
+    var lastname:String
+    var email: String
+    var rfc: String
+    var phone:String
+    var password: String
+    var id_bank:Int
+    var id: Int
+}
+
+class APIBK: ObservableObject{
+    @Published var movements = [movement]()
+    
+    let url_base = "https://5e01-187-188-58-190.ngrok-free.app/users"
+    
+    func register( request: UserReq) async throws -> UserResp?{
+        
+        let response = try await CentralBankAPI2().connectApi(path: "/users", method: methodsHTTP.POST, body: request)
+        
+        // se destructura el response
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 201 else {
+            print("Error en la peticion")
+            return nil}
+        
+        let loginResponse = try JSONDecoder().decode(UserResp.self, from: data)
+        print(loginResponse)
+        return loginResponse
+    }
     
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response
-    func fetchMovements(completion: @escaping([MovementExample])->( ) ){
+    func fetchMovements(completion: @escaping([movement])->( ) ){
         // similar a un tryCatch, se usa para validar el url (validaciones simples)
         guard let url = URL(string: url_base)
         else {
@@ -47,7 +95,7 @@ class CentralBankAPIExample: ObservableObject{
                 DispatchQueue.main.async {
                     do {
                         let movements = try JSONDecoder().decode(
-                            [MovementExample].self, from: data
+                            [movement].self, from: data
                         )
                         // aqui se manda el responde
                         completion(movements)
@@ -58,39 +106,4 @@ class CentralBankAPIExample: ObservableObject{
             }
         }.resume() // se usa para decirle a quien lo consuma que se completo la tarea
     }
-    
-    
-    func login( request: LoginReqExample) async throws -> LoginReqExample?{
-            //var result : LoginRes?
-            
-            guard let url = URL(string: url_base) else{
-                print("URL no valido")
-                return nil
-            }
-            
-            var urlReq = URLRequest(url: url)
-            urlReq.httpMethod = "POST"
-            urlReq.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let encoder = JSONEncoder()
-            
-            do {
-                urlReq.httpBody = try encoder.encode(request)
-            } catch {
-                print("Fallo al conectar")
-                return nil
-            }
-            
-            let (data, response) = try await URLSession.shared.data(for: urlReq)
-            
-            guard let response = response as? HTTPURLResponse,
-                  response.statusCode == 201 else {
-                return nil
-            }
-            
-            let loginResponse = try JSONDecoder().decode(LoginReqExample.self, from: data)
-            
-            return loginResponse
-        }
-    
 }

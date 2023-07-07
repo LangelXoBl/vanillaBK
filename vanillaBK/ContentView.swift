@@ -20,7 +20,7 @@ struct ContentView: View {
             if(!auth){
                 LoginView(isAuth: $auth)
             }else{
-                Button("Logout"){
+                Button("Logout test"){
                     auth = false
                     var save = UserDefaults.standard.bool(forKey: "save")
                     print(save)

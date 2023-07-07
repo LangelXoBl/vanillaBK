@@ -45,11 +45,11 @@ struct MovementsView: View {
 
     
     ]
-    @State private var search:
-    String = ""
+    
     var body: some View {
         NavigationView{
             VStack{
+
                 //titulo
                 Text("Movimientos").font(.title)
                 
@@ -62,34 +62,26 @@ struct MovementsView: View {
                         .cornerRadius(14)
                     Image(systemName: "magnifyingglass")
                 }.padding(6)
-              
+                            
+
                 //lista
                 Spacer()
                 List(data){movement in
                     Section(header: Text(movement.concepto)){
-                        HStack{
-                            NavigationLink(destination: DetailMovementView(item:movement)){
-                                HStack{
-                                    movement.icon
-                                    VStack{
-                                        Text(movement.fecha)
-                                    }
-                                    Spacer()
-                                    VStack{
-                                        Text("$"+String( movement.monto))
-                                        Text(movement.status==0 ?"Pendiente":"Completado")
-                                    }
-                                }
-                                
+                        HStack
+                            movement.icon
+                            VStack{
+                                Text(movement.fecha).foregroundColor(Color .black).font(.system(size: 14) .italic())
+                                Text(movement.concepto).foregroundColor(Color .black).font(.system(size: 14) .italic())
                             }
-                           
-                        }
-                    }
-                   
-                  
-                }.listStyle(.plain)
-                Button("Regresar"){
-                    
+                            Spacer()
+                            VStack{
+                                Text("$"+String( movement.monto)).foregroundColor(Color .black).font(.system(size: 14) .italic())
+                                Text(movement.status==0 ?"Pendiente":"Completado").foregroundColor(Color .black).font(.system(size: 14) .italic())
+                            }
+                        }.padding(10)
+                            .background(.blue.opacity(0.25))
+                    }.scrollContentBackground(.hidden)
                 }
             }
         }
