@@ -27,7 +27,7 @@ struct Dashboardview: View {
                         
                         VStack{
                             Text("Realizar trasferencia")
-                            NavigationLink(destination: MovementsView()){
+                            NavigationLink(destination: TransferView()){
                                 
                                 
                                 HStack{
@@ -43,7 +43,7 @@ struct Dashboardview: View {
                         VStack{
                             Text("Realizar trasferencia")
                             MovementsView().frame(width: 320.0, height: 270.0).cornerRadius(30)
-                        }.frame(width: 320.0, height: 270.0).padding(17).background(Color .blue.opacity(0.5)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:410)
+                        }.frame(width: 320.0, height: 270.0).padding(17).background(Color .blue.opacity(0.5)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:430)
                     }
                 }
                 
