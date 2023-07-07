@@ -58,16 +58,16 @@ struct MovementsView: View {
                         HStack{
                             movement.icon
                             VStack{
-                                Text(movement.fecha)
-                                Text(movement.concepto)
+                                Text(movement.fecha).foregroundColor(Color .black).font(.system(size: 14) .italic())
+                                Text(movement.concepto).foregroundColor(Color .black).font(.system(size: 14) .italic())
                             }
                             Spacer()
                             VStack{
-                                Text("$"+String( movement.monto))
-                                Text(movement.status==0 ?"Pendiente":"Completado")
+                                Text("$"+String( movement.monto)).foregroundColor(Color .black).font(.system(size: 14) .italic())
+                                Text(movement.status==0 ?"Pendiente":"Completado").foregroundColor(Color .black).font(.system(size: 14) .italic())
                             }
                         }.padding(10)
-                            .background(.gray.opacity(0.25))
+                            .background(.blue.opacity(0.25))
                     }.scrollContentBackground(.hidden)
                 }
             }}
