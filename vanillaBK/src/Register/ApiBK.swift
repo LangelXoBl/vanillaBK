@@ -42,7 +42,7 @@ struct Errors: Codable {
 
 struct loginReq: Codable {
     var phone: String
-        var password: String
+    var password: String
 }
 
 struct loginResp: Codable{
@@ -51,10 +51,31 @@ struct loginResp: Codable{
     var message: String?
 }
 
+struct DetailResp: Codable {
+    var status: String
+    var data: DataDetail
+    var message: String?
+}
+
+struct DataDetail: Codable {
+    var id: Int
+    var id_user: Int
+    var balance: Int
+    var status: Int
+    var card: [CardUser]
+    var user: DataRes
+}
+struct CardUser: Codable {
+    var id: Int
+    var id_account: Int
+    var card: String
+    var card_account: String
+    var status: Int
+}
+
 class APIBK: ObservableObject{
     @Published var movements = [movement]()
     
-    let url_base = "https://5e01-187-188-58-190.ngrok-free.app/users"
     
     func register( request: UserReq) async throws -> UserResp?{
         
@@ -97,6 +118,26 @@ class APIBK: ObservableObject{
         return loginResponse
     }
     
+    func getUserData() async throws  -> DetailResp? {
+        let response  = try await CentralBankAPI2().connectApiProtectGET(path: "/accounts/me", method: methodsHTTP.GET)
+
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+       
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode != 201 else {
+            print("Error en la peticion")
+            return nil}
+        
+        let detailResponde = try JSONDecoder().decode(DetailResp.self, from: data)
+        print("doceode \(detailResponde)")
+        return detailResponde
+    }
+    
+    let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response
     func fetchMovements(completion: @escaping([movement])->( ) ){

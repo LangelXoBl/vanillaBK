@@ -21,10 +21,10 @@ struct ContentView: View {
                 LoginView(isAuth: $auth)
             }else{
                 Button("Logout test"){
-                    auth = true
+                    auth = false
                     let save = UserDefaults.standard.bool(forKey: "save")
                     print(save)
-                                                          if(!save){
+                            if(!save){
                         UserDefaults.standard.set("a", forKey: "user")
                         UserDefaults.standard.set("a", forKey: "pass")}
                 }

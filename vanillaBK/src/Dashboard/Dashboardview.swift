@@ -9,6 +9,11 @@ import SwiftUI
 
 struct Dashboardview: View {
     @State var name = UserDefaults.standard.string(forKey: "user") ?? "Anonimo"
+    @State var card: CardUser?
+    @State var dataUser: DataDetail?
+    @State var user: DataRes?
+    @State var userName: String = "Anonimous"
+    
     var body: some View {
        
         NavigationView()
@@ -21,9 +26,9 @@ struct Dashboardview: View {
                     ZStack {
                         
                         HStack{
-                            CardView(atributo :"Balance: ", data:"$1500",cta: 1291)
-                            Image("money-bag").resizable() .frame(width: 100, height:100)
-                        }.frame(width: 320.0, height: 200.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20)
+                            CardView(atributo :"Balance: ", data: dataUser?.balance ?? 0,cta: card?.card ?? "XXXXXXXX")
+                            Image("money-bag").resizable() .frame(width: 90, height:90)
+                        }.frame(width: 320.0, height: 180.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20)
                         
                         VStack{
                             Text("Realizar trasferencia")
@@ -51,10 +56,10 @@ struct Dashboardview: View {
                     HStack{
                         
                         NavigationLink(destination: UserProfile()){
-                            Text("! Hola soy un nombre de usuario ¡").foregroundColor(Color .white ).font(.system(size: 15)).italic()
+                            Text("! Hola \(userName) ¡").foregroundColor(Color .white ).font(.system(size: 25)).italic()
                             Image("user").resizable()
                                 .frame(width: 35, height:35)
-                        }.offset(x:0,y:-100)}
+                        }.offset(x:0,y:-80)}
 
                     }
                     
@@ -64,6 +69,26 @@ struct Dashboardview: View {
                 
                 
             }.padding(20).background(Color .blue.opacity(0.2))
+        }.onAppear{
+            Task{
+                do {
+                    let rs = try await APIBK().getUserData()
+                    if let result = rs?.message {
+                        print(result)
+                    }
+                    if let data = rs?.data {
+                        print(data)
+                        card = data.card[0]
+                        dataUser = data
+                        user = data.user
+                        userName = data.user.name
+                    }
+                }catch{
+                    print("Erro al cread")
+                }
+                
+            }
+            
         }
           
     }
@@ -74,10 +99,10 @@ struct Dashboardview: View {
 
 struct CardView: View {
     var texto: String
-    var dta : String
-    var ctaa : Int
+    var dta : Int
+    var ctaa : String
     
-    init(atributo :String, data: String, cta: Int){
+    init(atributo :String, data: Int, cta: String){
         self.texto = atributo
         self.dta = data
         self.ctaa = cta
@@ -87,11 +112,13 @@ struct CardView: View {
         HStack{
            
             VStack{
-                Text(texto).font(.system(size: 14) .italic())
                 Spacer()
-                Text(dta).font(.system(size: 19))
+                HStack{
+                    Text(texto).font(.system(size: 15) .italic())
+                    Text("$"+String(dta)).font(.system(size: 15).bold())
+                }
                 Spacer()
-                Text(String(ctaa)).font(.system(size: 14))
+                Text(ctaa).font(.system(size: 14))
             }.padding(5)
             Spacer()
             

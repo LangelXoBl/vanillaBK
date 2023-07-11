@@ -11,20 +11,17 @@ struct NavView: View {
     var body: some View {
         TabView{
             Dashboardview().tabItem{
-                Image(systemName: "1.circle")
+                Image(systemName: "house")
                 Text("Dashboard")
             }
             MovementsView().tabItem{
-                Image(systemName: "2.circle")
-                Text("movimeinto")
-            }
-            TransferView().tabItem{
-                Image(systemName: "3.circle")
+                Image(systemName: "arrow.up.right.and.arrow.down.left.rectangle.fill")
                 Text("movimeinto")
             }
         }
     }
 }
+
 
 struct NavView_Previews: PreviewProvider {
     static var previews: some View {

@@ -84,6 +84,7 @@ struct LoginView: View {
                             }
                             if let token = rs?.access_token {
                                 print(token)
+                                UserDefaults.standard.set(token, forKey: "token")
                                 isAuth = true
                             }
                         }catch{
