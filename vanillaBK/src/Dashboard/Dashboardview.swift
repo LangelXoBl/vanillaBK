@@ -55,7 +55,7 @@ struct Dashboardview: View {
                         
                     HStack{
                         
-                        NavigationLink(destination: UserProfile()){
+                        NavigationLink(destination: UserProfile(item: user)){
                             Text("! Hola \(userName) ¡").foregroundColor(Color .white ).font(.system(size: 25)).italic()
                             Image("user").resizable()
                                 .frame(width: 35, height:35)

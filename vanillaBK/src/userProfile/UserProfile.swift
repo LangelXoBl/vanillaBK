@@ -9,6 +9,12 @@ import SwiftUI
 
 struct UserProfile: View {
     let gradient = Gradient(colors: [.blue, .purple])
+    
+   @State var item: DataRes?
+  @State var userName: String = "Anonimous"
+    @State var cardDetail : CardUser?
+    
+    
     var body: some View {
         NavigationView(){
             
@@ -18,7 +24,7 @@ struct UserProfile: View {
                     VStack{
                         VStack {
                             
-                            Text("Hola").font(.system(size: 25))
+                            Text("Hola \(userName)").font(.system(size: 25))
                             Text(String(121233123)).font(.system(size: 27))
                         }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
                         
@@ -45,9 +51,9 @@ struct UserProfile: View {
                         VStack{
                             
                             VStack{
-                                Bottom(atributo :"phone", data:"AksqQhadydg7TRdfgUIJH", icon: "phone")
-                                Bottom(atributo :"email", data:"AksqQhadydg7TRdfgUIJH", icon: "mail")
-                                Bottom(atributo :"Key", data:"AksqQhadydg7TRdfgUIJH", icon: "key")
+                                Bottom(atributo :"phone", data:item?.phone ?? "na", icon: "phone")
+                                Bottom(atributo :"email", data: item?.email ?? "AksqQhadydg7TRdfgUIJH", icon: "mail")
+                               // Bottom(atributo :"Key", data: String(cardDetail?.id_account ?? "na") ?? "AksqQhadydg7TRdfgUIJH", icon: "key")
                             }.padding(11)
                         }.background(Color .blue .opacity(0.6)).cornerRadius(10)
                         Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up")
@@ -63,6 +69,14 @@ struct UserProfile: View {
               
                
             }.background(Color .blue .opacity(0.2))
+        }.onAppear(){
+            
+            if let item = item {
+                userName = item.name
+                
+                print(userName)
+            }
+            
         }
        
         
