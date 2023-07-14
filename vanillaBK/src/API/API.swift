@@ -24,7 +24,7 @@ case GET, POST, PATCH, DELETE
 class CentralBankAPI2: ObservableObject{
     @Published var movements = [movement]()
     
-    let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
+    let url_base = "https://1e93-187-188-58-190.ngrok-free.app"
     
     func connectApi<T: Encodable >(path: String, method:methodsHTTP , body: T)async throws -> (Data, URLResponse)? {
         // se valida el url
