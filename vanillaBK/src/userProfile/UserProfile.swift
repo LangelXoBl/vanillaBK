@@ -27,7 +27,7 @@ struct UserProfile: View {
                             Text("Hola \(userName)").font(.system(size: 25))
                             Text(String(121233123)).font(.system(size: 27))
                         }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
-                        
+                      
                         
                         HStack{
                             Text("Edit profile").foregroundColor(.black).italic().bold().padding(.top, 8)
@@ -43,8 +43,9 @@ struct UserProfile: View {
                         
                         HStack{
                             HStack{
-                                Card(atributo :"data", data:"test")
-                                Card(atributo :"data", data:"test")
+                                Card(atributo :"Last name", data: item?.lastname ?? "test", iconn: "key")
+                                Card(atributo :"key", data:  cardDetail?.card_account ?? "card_account", iconn: "key")
+                                
                             }.padding(11)
                         }.background(Color .blue).cornerRadius(10)
                         
@@ -53,7 +54,9 @@ struct UserProfile: View {
                             VStack{
                                 Bottom(atributo :"phone", data:item?.phone ?? "na", icon: "phone")
                                 Bottom(atributo :"email", data: item?.email ?? "AksqQhadydg7TRdfgUIJH", icon: "mail")
-                               // Bottom(atributo :"Key", data: String(cardDetail?.id_account ?? "na") ?? "AksqQhadydg7TRdfgUIJH", icon: "key")
+                                Bottom(atributo :"Key", data: cardDetail?.card_account ?? "loding" , icon: "key")
+                                
+                                
                             }.padding(11)
                         }.background(Color .blue .opacity(0.6)).cornerRadius(10)
                         Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up")
@@ -76,7 +79,6 @@ struct UserProfile: View {
                 
                 print(userName)
             }
-            
         }
        
         
@@ -87,22 +89,27 @@ struct UserProfile: View {
 struct Card: View {
     var texto: String
     var dta : String
-    
-    init(atributo :String, data: String){
+    var icon :String
+    init(atributo :String, data: String, iconn : String){
         self.texto = atributo
         self.dta = data
+        self.icon = iconn
     }
     var body: some View {
        
         HStack{
-            
+           Spacer()
             VStack{
+                Image(systemName: icon).resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 15, height: 15)
                 Text(texto).font(.system(size: 14))
+
                 Text(dta).font(.system(size: 14))
             }.padding(5)
             Spacer()
             
-        }.padding(20).background(Color .black).foregroundColor(.white).cornerRadius(20)
+        }.padding(20).background(Color .black .opacity(0.3)).foregroundColor(.white).cornerRadius(10)
         
     }
     
@@ -133,7 +140,7 @@ struct Bottom: View {
             }
             Spacer()
             
-        }.padding(25).background(Color .black).foregroundColor(.white).cornerRadius(20)
+        }.padding(25).background(Color .black .opacity(0.8)).foregroundColor(.white).cornerRadius(20)
         
     }
     

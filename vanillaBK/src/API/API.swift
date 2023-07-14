@@ -23,8 +23,9 @@ case GET, POST, PATCH, DELETE
 
 class CentralBankAPI2: ObservableObject{
     @Published var movements = [movement]()
+    let token = UserDefaults.standard.string(forKey: "token") ?? "NA"
     
-    let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
+    let url_base = "https://1e93-187-188-58-190.ngrok-free.app"
     
     func connectApi<T: Encodable >(path: String, method:methodsHTTP , body: T)async throws -> (Data, URLResponse)? {
         // se valida el url
@@ -37,6 +38,7 @@ class CentralBankAPI2: ObservableObject{
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.toString
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let encoder = JSONEncoder()
         // se parsea el body
@@ -61,7 +63,6 @@ class CentralBankAPI2: ObservableObject{
     }
     
     func connectApiProtectGET(path: String, method:methodsHTTP )async throws -> (Data, URLResponse)? {
-        let token = UserDefaults.standard.string(forKey: "token") ?? "NA"
         // se valida el url
         guard let url = URL(string: url_base + path)
         else {

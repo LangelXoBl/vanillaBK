@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct TransferView: View {
-        @State private var importe: String = ""
-        @State private var cuentaDestino: String = ""
+
+        @State private var importe: Int = 0
+        @State private var cuentaDestino: String = "9448692199903896"
+        @State private var concepto: String = ""
+    @State private var message: String?
+    let userAccount = "9580680860316257"
         let ntf = NotificationHandler(title: "Transferencia bancaria", subititle: "Exitosa", body: "Se ha realizado la transferencia desde tu banca de preferencia")
         var body: some View {
             ZStack{
@@ -42,17 +46,34 @@ struct TransferView: View {
                           
                         }.padding(.top, 15.0)
                        
-                        Button("Enviar")
-                        {
-                            ntf.body = "Envio de $ \(importe) Exitoso, a la cuenta: \(cuentaDestino)"
-                            ntf.showNotification()
-                          print("enviado")
-                        }.padding(.top, 18.0).buttonStyle(ButtonGeneric())
 
-                    }
                   
                    
-                }
+
+
+                Text(message ?? "").foregroundColor(message == "Complete" ? .green : .red)
+
+                Button("Enviar")
+                {
+                    Task{
+                        do {
+                            let rs = try await APIBK().newTransfer(body: NewTransfer(user_account: userAccount, receptor_account: cuentaDestino, amount: importe))
+                            if let result = rs?.message {
+                                message = result
+                            }else {message = "No account associated to user" }
+                            if let data = rs?.data {
+                                ntf.body = "Envio de $ \(data.amount) Exitoso, a la tarjeta: \(cuentaDestino)"
+                                ntf.showNotification()
+                              print("enviado")
+                            }
+                        }catch{
+                            print("Error de transferencia")
+                        }
+                        
+                    }
+                    
+
+                }.padding(.top, 18.0).buttonStyle(ButtonGeneric())
     //termina ZStack
             }
             
