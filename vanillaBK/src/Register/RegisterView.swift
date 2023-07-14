@@ -5,21 +5,6 @@
 //  Created by imac_01 on 19/06/23.
 //
 import SwiftUI
-
-
-struct RegisterButton: ButtonStyle {
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(width: 320, height: 50)
-            .foregroundColor(.black)
-            .background(
-                configuration.isPressed ? Color(red: 0.5098039215686274, green: 0.5803921568627451, blue: 0.7686274509803922 , opacity: 1.0) : Color(red: 0.5098039215686274, green: 0.5803921568627451, blue: 0.7686274509803922)
-            ).cornerRadius(14)
-    }
-}
-
-
 struct RegisterView: View {
     @State private var nombreUsuario: String = ""
        @State private var lastname: String = ""
@@ -34,81 +19,81 @@ struct RegisterView: View {
        
        var body: some View {
           
-           VStack{
-               Text("Registro").font(.system(size: 60)).fontWeight(.bold)
-                                   .foregroundColor(.black)
-                                   .lineLimit(14)
-                               HStack{
-                                   TextField("Nombre", text: $nombreUsuario)
-                                       .padding(15)
-                                       .frame(width: 320, height: 50)
-                                       .background(Color.black.opacity(0.05))
-                                       .cornerRadius(14)
-                               }.padding(4)
-                               HStack{
-                                   TextField("Apellidos", text: $lastname)
-                                       .padding(15)
-                                       .frame(width: 320, height: 50)
-                                       .background(Color.black.opacity(0.05))
-                                       .cornerRadius(14)
-                               }.padding(4)
-                              
-                               HStack{
-                                   TextField("email@example.com", text: $email)
-                                       .padding(15)
-                                       .frame(width: 320, height: 50)
-                                       .background(Color.black.opacity(0.05))
-                                       .cornerRadius(14)
-                               }.padding(4)
-                           
-                               HStack{
-                                   TextField("RFC", text: $rfcUsuario)
-                                       .padding(15)
-                                       .frame(width: 320, height: 50)
-                                       .background(Color.black.opacity(0.05))
-                                       .cornerRadius(14)
-                               }.padding(4)
-                               
-                                   
-                               Group{
+           ZStack{
+               Color.blue .opacity(0.2).edgesIgnoringSafeArea(.all)
+               VStack{
+                   Text("Registro").font(.system(size: 60)).fontWeight(.bold)
+                                       .foregroundColor(.black)
+                                       .lineLimit(14)
                                    HStack{
-                                       TextField("Teléfono", text: $numTelefono)
+                                       TextField("Nombre", text: $nombreUsuario)
                                            .padding(15)
-                                           .frame(width: 320, height: 50)
-                                           .background(Color.black.opacity(0.05))
-                                           .cornerRadius(14)
+                                               .frame(width: 320, height: 50)
+                                               .background(Color.white.opacity(0.6))
+                                               .cornerRadius(14).padding(.top, 15.0)
                                    }.padding(4)
                                    HStack{
-                                       SecureField("Contraseña", text: $contraseña)
-                                            .padding(15)
-                                            .frame(width: 320, height: 50)
-                                            .background(Color.black.opacity(0.05))
-                                            .cornerRadius(14)
+                                       TextField("Apellidos", text: $lastname)
+                                           .padding(15)
+                                               .frame(width: 320, height: 50)
+                                               .background(Color.white.opacity(0.6))
+                                               .cornerRadius(14).padding(.top, 15.0)
                                    }.padding(4)
-                   Text(message).foregroundColor(.red)
-                   Button("Registrar") {
-                     print("enviado")
-                       let userReq = UserReq(name: nombreUsuario, lastname: lastname, email: email, rfc: rfcUsuario, phone: numTelefono, password: contraseña, id_bank: 10)
-                       Task{
-                           do {
-                               let rs = try await api.register(request: userReq)
-                               if let result = rs?.message{
-                                   message = result
-                               } else {message = "Creado con exito"}
-                           }catch{
-                               print("Erro al cread")
+                                  
+                                   HStack{
+                                       TextField("email@example.com", text: $email)
+                                           .padding(15)
+                                               .frame(width: 320, height: 50)
+                                               .background(Color.white.opacity(0.6))
+                                               .cornerRadius(14).padding(.top, 15.0)
+                                   }.padding(4)
+                               
+                                   HStack{
+                                       TextField("RFC", text: $rfcUsuario)
+                                           .padding(15)
+                                               .frame(width: 320, height: 50)
+                                               .background(Color.white.opacity(0.6))
+                                               .cornerRadius(14).padding(.top, 15.0)
+                                   }.padding(4)
+                                   
+                                       
+                                   Group{
+                                       HStack{
+                                           TextField("Teléfono", text: $numTelefono)
+                                               .padding(15)
+                                                   .frame(width: 320, height: 50)
+                                                   .background(Color.white.opacity(0.6))
+                                                   .cornerRadius(14).padding(.top, 15.0)
+                                       }.padding(4)
+                                       HStack{
+                                           SecureField("Contraseña", text: $contraseña)
+                                               .padding(15)
+                                                   .frame(width: 320, height: 50)
+                                                   .background(Color.white.opacity(0.6))
+                                                   .cornerRadius(14).padding(.top, 15.0)
+                                       }.padding(4)
+                       Text(message).foregroundColor(.red)
+                       Button("Registrar") {
+                         print("enviado")
+                           let userReq = UserReq(name: nombreUsuario, lastname: lastname, email: email, rfc: rfcUsuario, phone: numTelefono, password: contraseña, id_bank: 10)
+                           Task{
+                               do {
+                                   let rs = try await api.register(request: userReq)
+                                   if let result = rs?.message{
+                                       message = result
+                                   } else {message = "Creado con exito"}
+                               }catch{
+                                   print("Erro al cread")
+                               }
+                               
                            }
                            
-                       }
+                       }.buttonStyle(ButtonGeneric())
                        
                    }
-                   .fontWeight(.bold)
-                                       .padding(.top, 18.0)
-                                       .buttonStyle(RegisterButton())
-                   
-               }
-             
-           }.padding(20)
+                 
+               }.padding(20)
+           }
        }
 }
 

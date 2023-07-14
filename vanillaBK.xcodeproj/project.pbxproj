@@ -12,6 +12,7 @@
 		130AB1032A1C45AD00FD0B69 /* vanillaBKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB1022A1C45AD00FD0B69 /* vanillaBKTests.swift */; };
 		130AB10D2A1C45AD00FD0B69 /* vanillaBKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */; };
 		130AB10F2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */; };
+		15DC1CFC2A60C6F600DBC0C6 /* structureReutilizables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC1CFB2A60C6F600DBC0C6 /* structureReutilizables.swift */; };
 		430BCC8E2A54FFD500DCA92C /* money-bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 430BCC852A54FFD500DCA92C /* money-bag.png */; };
 		430BCC8F2A54FFD500DCA92C /* salary.png in Resources */ = {isa = PBXBuildFile; fileRef = 430BCC862A54FFD500DCA92C /* salary.png */; };
 		430BCC902A54FFD500DCA92C /* money-transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 430BCC872A54FFD500DCA92C /* money-transfer.png */; };
@@ -75,6 +76,7 @@
 		130AB1082A1C45AD00FD0B69 /* vanillaBKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vanillaBKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB10C2A1C45AD00FD0B69 /* vanillaBKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITests.swift; sourceTree = "<group>"; };
 		130AB10E2A1C45AD00FD0B69 /* vanillaBKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		15DC1CFB2A60C6F600DBC0C6 /* structureReutilizables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structureReutilizables.swift; sourceTree = "<group>"; };
 		430BCC852A54FFD500DCA92C /* money-bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money-bag.png"; sourceTree = "<group>"; };
 		430BCC862A54FFD500DCA92C /* salary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = salary.png; sourceTree = "<group>"; };
 		430BCC872A54FFD500DCA92C /* money-transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money-transfer.png"; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 			path = vanillaBKUITests;
 			sourceTree = "<group>";
 		};
+		15DC1CFA2A60C6BA00DBC0C6 /* reutilizable */ = {
+			isa = PBXGroup;
+			children = (
+				15DC1CFB2A60C6F600DBC0C6 /* structureReutilizables.swift */,
+			);
+			path = reutilizable;
+			sourceTree = "<group>";
+		};
 		43A2E2182A57A051002BBEFD /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +213,7 @@
 		8B7505E02A29728C00937D09 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				15DC1CFA2A60C6BA00DBC0C6 /* reutilizable */,
 				43A2E2182A57A051002BBEFD /* API */,
 				8B9074682A4132EB00062C4F /* Register */,
 				8BE46C6F2A37E0DE00AEDB1C /* Examples */,
@@ -481,6 +492,7 @@
 				8BE46C722A37E17300AEDB1C /* CentralBankApi.example.swift in Sources */,
 				8B7505F52A29728C00937D09 /* Imageview.swift in Sources */,
 				8B7506002A29759700937D09 /* UserViewModel.swift in Sources */,
+				15DC1CFC2A60C6F600DBC0C6 /* structureReutilizables.swift in Sources */,
 				8B7505F72A29728C00937D09 /* TransferView.swift in Sources */,
 				8BF424752A32C05600A5C7F7 /* NavView.swift in Sources */,
 				8B7506042A297A9900937D09 /* Movement.swift in Sources */,
