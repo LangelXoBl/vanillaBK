@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BB5B6702A60C08A0017806B /* Entitys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5B66F2A60C08A0017806B /* Entitys.swift */; };
 		130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB0F12A1C45AC00FD0B69 /* vanillaBKApp.swift */; };
 		130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB0F32A1C45AC00FD0B69 /* ContentView.swift */; };
 		130AB1032A1C45AD00FD0B69 /* vanillaBKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB1022A1C45AD00FD0B69 /* vanillaBKTests.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BB5B66F2A60C08A0017806B /* Entitys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entitys.swift; sourceTree = "<group>"; };
 		130AB0EE2A1C45AC00FD0B69 /* vanillaBK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vanillaBK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB0F12A1C45AC00FD0B69 /* vanillaBKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKApp.swift; sourceTree = "<group>"; };
 		130AB0F32A1C45AC00FD0B69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				43A2E2192A57A051002BBEFD /* API.swift */,
+				0BB5B66F2A60C08A0017806B /* Entitys.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				8BE46C742A37E19C00AEDB1C /* Movement.example.swift in Sources */,
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,
+				0BB5B6702A60C08A0017806B /* Entitys.swift in Sources */,
 				130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */,
 				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,

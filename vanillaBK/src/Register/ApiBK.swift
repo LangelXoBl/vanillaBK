@@ -137,6 +137,26 @@ class APIBK: ObservableObject{
         return detailResponde
     }
     
+    func newTransfer(body: NewTransfer) async throws -> Responsetransfer? {
+        let response = try await CentralBankAPI2().connectApi(path: "/transferences", method: methodsHTTP.POST, body: body)
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+       
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 201 else {
+            print("Error en la peticion")
+            return nil}
+        
+        let dataRes = try JSONDecoder().decode(Responsetransfer.self, from: data)
+        print("docode \(dataRes)")
+        return dataRes
+    }
+    
+    
+    
     let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response

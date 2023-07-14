@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct TransferView: View {
-        @State private var importe: String = ""
-        @State private var cuentaDestino: String = ""
+        @State private var importe: Int = 0
+        @State private var cuentaDestino: String = "9448692199903896"
         @State private var concepto: String = ""
+    @State private var message: String?
+    let userAccount = "9580680860316257"
         let ntf = NotificationHandler(title: "Transferencia bancaria", subititle: "Exitosa", body: "Se ha realizado la transferencia desde tu banca de preferencia")
         var body: some View {
            
@@ -27,7 +29,7 @@ struct TransferView: View {
                 Spacer()
                 
                 Text("Importe").padding(.leading, -170)
-                TextField("Monto $ ", text: $importe).background(Color.white)
+                TextField("Monto $ ", value: $importe, format: .number).background(Color.white)
                     .padding(20)
                     .border(.gray, width:1)
                     .cornerRadius(10)
@@ -37,17 +39,28 @@ struct TransferView: View {
                     .padding(20)
                     .border(.gray)
                     .cornerRadius(10)
-                Text("Concepto")
-                    .padding(.leading, -170)
-                TextField("Descripción de tranferencia", text: $concepto)
-                    .padding(20)
-                    .border(.gray)
-                    .cornerRadius(10)
+                Text(message ?? "").foregroundColor(message == "Complete" ? .green : .red)
+
                 Button("Enviar")
                 {
-                    ntf.body = "Envio de $ \(importe) Exitoso, con el concepto: \(concepto)"
-                    ntf.showNotification()
-                  print("enviado")
+                    Task{
+                        do {
+                            let rs = try await APIBK().newTransfer(body: NewTransfer(user_account: userAccount, receptor_account: cuentaDestino, amount: importe))
+                            if let result = rs?.message {
+                                message = result
+                            }else {message = "No account associated to user" }
+                            if let data = rs?.data {
+                                ntf.body = "Envio de $ \(data.amount) Exitoso, a la tarjeta: \(cuentaDestino)"
+                                ntf.showNotification()
+                              print("enviado")
+                            }
+                        }catch{
+                            print("Error de transferencia")
+                        }
+                        
+                    }
+                    
+                    
                 }
                
             }.padding(20)
