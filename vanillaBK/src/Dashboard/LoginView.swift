@@ -47,74 +47,79 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
-                Text("Vanilla BK").font(.system(size: 60)).fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .lineLimit(14)
-            
-                HStack{
-                    TextField("username", text: $username)
-                        .padding(15)
-                        .frame(width: 320, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(14)
-                }.padding(4)
-                HStack{
-                    TextField("password", text: $password)
-                        .padding(15)
-                        .frame(width: 320, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(14)
-                }.padding(4)
-                Toggle(isOn: $keep){
-                    Text("Mantener session")
-                }.padding(.horizontal)
-                Toggle(isOn: $faceId){
-                    Text("Iniciar con id")
-                }.padding(.horizontal)
-                Button("Login"){
-                    
-                    print("tab")
-                    
-                    Task{
-                        do {
-                            let rs = try await APIBK().login(user: loginReq(phone: username, password: password))
-                            if let result = rs?.message {
-                                print(result)
+            ZStack{
+                Color.blue .opacity(0.2).edgesIgnoringSafeArea(.all)
+                VStack {
+                    Text("Vanilla BK").font(.system(size: 60)).fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .lineLimit(14)
+                
+                    HStack{
+                        TextField("username", text: $username)
+                            .padding(15)
+                                .frame(width: 320, height: 50)
+                                .background(Color.white.opacity(0.6))
+                                .cornerRadius(14)
+                    }.padding(4)
+                    HStack{
+                        TextField("password", text: $password)
+                            .padding(15)
+                                .frame(width: 320, height: 50)
+                                .background(Color.white.opacity(0.6))
+                                .cornerRadius(14)
+                    }.padding(4)
+                    Toggle(isOn: $keep){
+                        Text("Mantener session")
+                    }.padding(.horizontal)
+                    Toggle(isOn: $faceId){
+                        Text("Iniciar con id")
+                    }.padding(.horizontal)
+                    Button("Login"){
+                        
+                        print("tab")
+                        
+                        Task{
+                            do {
+                                let rs = try await APIBK().login(user: loginReq(phone: username, password: password))
+                                if let result = rs?.message {
+                                    print(result)
+                                }
+                                if let token = rs?.access_token {
+                                    print(token)
+                                    UserDefaults.standard.set(token, forKey: "token")
+                                    isAuth = true
+                                }
+                            }catch{
+                                print("Erro al cread")
                             }
-                            if let token = rs?.access_token {
-                                print(token)
-                                UserDefaults.standard.set(token, forKey: "token")
-                                isAuth = true
-                            }
-                        }catch{
-                            print("Erro al cread")
+                            
                         }
                         
+                        UserDefaults.standard.set(keep, forKey: "save")
+                        
+                        if(keep){
+                            UserDefaults.standard.set(faceId, forKey: "faceId")
+                            UserDefaults.standard.set(username, forKey: "user")
+                            UserDefaults.standard.set(password, forKey: "pass")}
+                        if(!faceId){
+                            UserDefaults.standard.set(faceId, forKey: "faceId")}
+                    }.fontWeight(.bold)
+                        .padding(.top, 18.0)
+                        .buttonStyle(LogginButton()).onAppear(){
+                        //pide permiso
+                        
+                        isAuth = false
+                        if(faceId){
+                            authenticate()}
+                    }
+                    NavigationLink(destination: RegisterView()){
+                        Text("Register")
                     }
                     
-                    UserDefaults.standard.set(keep, forKey: "save")
-                    
-                    if(keep){
-                        UserDefaults.standard.set(faceId, forKey: "faceId")
-                        UserDefaults.standard.set(username, forKey: "user")
-                        UserDefaults.standard.set(password, forKey: "pass")}
-                    if(!faceId){
-                        UserDefaults.standard.set(faceId, forKey: "faceId")}
-                }.fontWeight(.bold)
-                    .padding(.top, 18.0)
-                    .buttonStyle(LogginButton()).onAppear(){
-                    //pide permiso
-                    
-                    isAuth = false
-                    if(faceId){
-                        authenticate()}
                 }
-                NavigationLink(destination: RegisterView()){
-                    Text("Register")
-                }
-                
             }
+            
+                
         }
     }
 }

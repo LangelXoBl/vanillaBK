@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransferView: View {
+
         @State private var importe: Int = 0
         @State private var cuentaDestino: String = "9448692199903896"
         @State private var concepto: String = ""
@@ -15,30 +16,41 @@ struct TransferView: View {
     let userAccount = "9580680860316257"
         let ntf = NotificationHandler(title: "Transferencia bancaria", subititle: "Exitosa", body: "Se ha realizado la transferencia desde tu banca de preferencia")
         var body: some View {
-           
-            VStack{
-                
-                Text("Transferencia Bancaria ").font(.title)
-                    .foregroundColor(.gray)
-                    .background(Color.white).padding(.bottom)
+            ZStack{
+                Color.blue .opacity(0.2).edgesIgnoringSafeArea(.all)
                 VStack{
-                    Text("Bienvenido, Jonathan Valdes").padding(30)
-                    Text("Tu saldo es:").padding(5)
-                    Text("$50,000.00")
-                }.padding(.leading).frame(width: 350.0, height: 200.0).aspectRatio(contentMode: .fit).background(Color.gray).cornerRadius(10)
-                Spacer()
-                
-                Text("Importe").padding(.leading, -170)
-                TextField("Monto $ ", value: $importe, format: .number).background(Color.white)
-                    .padding(20)
-                    .border(.gray, width:1)
-                    .cornerRadius(10)
-                Text("Cuenta destino")
-                    .padding(.leading, -170)
-                TextField("Cuenta de banco", text: $cuentaDestino)
-                    .padding(20)
-                    .border(.gray)
-                    .cornerRadius(10)
+                    
+                    Text("Transferencia Bancaria ").font(.system(size: 25)).fontWeight(.bold).padding(.bottom)
+                    VStack{
+                        Text("Bienvenido, Jonathan Valdes").padding(30)
+                        Text("Tu saldo es:").padding(5)
+                    }.padding(.leading).frame(width: 350.0, height: 200.0).aspectRatio(contentMode: .fit).background(Color.blue .opacity(0.6)).cornerRadius(10)
+                        .font(.system(size: 20)).fontWeight(.bold)
+                    VStack{
+                        
+                        VStack{
+                            VStack{
+                                Text("Datos bancarios").font(.system(size: 25)).fontWeight(.bold)
+                            }
+                            TextField("Monto $ ", text: $importe).padding(15)
+                                .frame(width: 320, height: 50)
+                                .background(Color.white.opacity(0.6))
+                                .cornerRadius(14).padding(.top, 15.0)
+                        }.padding(.top, 80.0)
+                        VStack{
+                            TextField("Cuenta de banco", text: $cuentaDestino)
+                                .padding(15)
+                                    .frame(width: 320, height: 50)
+                                    .background(Color.white.opacity(0.6))
+                                    .cornerRadius(14)
+                          
+                        }.padding(.top, 15.0)
+                       
+
+                  
+                   
+
+
                 Text(message ?? "").foregroundColor(message == "Complete" ? .green : .red)
 
                 Button("Enviar")
@@ -60,10 +72,11 @@ struct TransferView: View {
                         
                     }
                     
-                    
-                }
-               
-            }.padding(20)
+
+                }.padding(.top, 18.0).buttonStyle(ButtonGeneric())
+    //termina ZStack
+            }
+            
            
     }
 }
