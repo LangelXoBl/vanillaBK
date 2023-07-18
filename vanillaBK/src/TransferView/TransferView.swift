@@ -13,7 +13,7 @@ struct TransferView: View {
     @State private var cuentaDestino: String = "9448692199903896"
     @State private var concepto: String = ""
     @State private var message: String?
-    let userAccount = "9580680860316257"
+    let userAccount = UserDefaults.standard.string(forKey: "nCount") ?? "NA"
     let ntf = NotificationHandler(title: "Transferencia bancaria", subititle: "Exitosa", body: "Se ha realizado la transferencia desde tu banca de preferencia")
     var body: some View {
         ZStack{

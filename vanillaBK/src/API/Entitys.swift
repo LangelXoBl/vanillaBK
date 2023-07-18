@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Transfer: Codable {
-var id: Int
+struct Transfer: Codable, Identifiable {
+    var id: Int
+    var amount: Int
 }
 
 struct NewTransfer: Codable {
@@ -26,4 +27,14 @@ struct Responsetransfer: Codable {
 
 struct DataResponseTransfer: Codable {
     var amount: Int
+}
+
+struct responseTransferList: Codable {
+    var status: String
+    var data: [Transfer]
+    var message: String?
+}
+
+struct updateUserResp: Codable {
+    var affected: Int
 }

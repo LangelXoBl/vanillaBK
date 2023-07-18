@@ -37,48 +37,48 @@ struct Movement: View{
 }
 
 struct MovementsView: View {
-    var data=[
-        movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),movements(monto: -100, fecha: "2023-02-13", concepto: "compra de coca", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de hamburguesa", icon: Image(systemName: "checkmark.circle.fill"), status: 1),
-        movements(monto: -100, fecha: "2023-02-13", concepto: "compra de sandia", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
-        ,movements(monto: -100, fecha: "2023-02-13", concepto: "compra de chettos", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1),
-        movements(monto: -100, fecha: "2023-02-13", concepto: "compra de pan", icon: Image(systemName: "checkmark.circle.fill"), status: 1),movements(monto: 100, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 0),
-        movements(monto: -1200, fecha: "2023-02-13", concepto: "compra de picsa", icon: Image(systemName: "checkmark.circle.fill"), status: 1)
-    ]
+    @State private var data: [Transfer] = []
     
     var body: some View {
         NavigationView{
             VStack{
-               
+               Text("Transferencias")
                 //lista
-                List(data){movement in
-                    NavigationLink(destination: DetailMovementView(item:movement)){
+                List(data){transfer in
+                    NavigationLink(destination: DetailMovementView(item:transfer)){
                         HStack{
-                            movement.icon
-                            VStack{
-                                Text(movement.fecha).foregroundColor(Color .black).font(.system(size: 14) .italic())
-                                Text(movement.concepto).foregroundColor(Color .black).font(.system(size: 14) .italic())
-                            }
-                            Spacer()
-                            VStack{
-                                Text("$"+String( movement.monto)).foregroundColor(Color .black).font(.system(size: 14) .italic())
-                                Text(movement.status==0 ?"Pendiente":"Completado").foregroundColor(Color .black).font(.system(size: 14) .italic())
-                            }
+                            Text("$ "+String( transfer.amount))
                         }.padding(10)
                             .background(.blue.opacity(0.25))
+                        
                     }.scrollContentBackground(.hidden)
                 }
-            }}
+            }
+            
+        }.onAppear{
+            Task{
+                do {
+                    let rs = try await APIBK().getTransfers()
+                    if let result = rs?.status{
+                        
+                      print("peticion exitosa" + result)
+                    }
+                }catch{
+                    print("Erro al traer lista")
+                }
+                
+            }
+            
+            
+        }
     }
 }
 
 struct DetailMovementView: View{
-    let item: movements
+    let item: Transfer
     var body: some View{
         VStack{
-            Text(item.concepto)
+            Text(String( item.amount))
             
         }
     }

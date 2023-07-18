@@ -61,7 +61,17 @@ struct EditUserData: View {
                 
                 Button("Enviar")
                 {
-                    print("hello")
+                    Task{
+                        do{
+                            let rs = try await APIBK().updateUser(user: UserReq(name: username, lastname: last_name, email: email, rfc: rfc, phone: phone, password: "pass", id_bank: 10))
+                            
+                            if let affected = rs?.affected{
+                                print("update Exitoso")
+                            }
+                        }catch{
+                            print("Error al actualizar")
+                        }
+                    }
                     
                     
                 }.padding(.top, 18.0).buttonStyle(ButtonGeneric())

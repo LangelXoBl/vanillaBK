@@ -82,6 +82,10 @@ struct Dashboardview: View {
                         dataUser = data
                         user = data.user
                         userName = data.user.name
+                        
+                        if let account = card?.card{
+                            UserDefaults.standard.set(account, forKey: "nCount")
+                        }
                     }
                 }catch{
                     print("Erro al cread")

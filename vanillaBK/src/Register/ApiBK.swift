@@ -155,7 +155,40 @@ class APIBK: ObservableObject{
         return dataRes
     }
     
+    func getTransfers() async throws  -> responseTransferList? {
+        let response  = try await CentralBankAPI2().connectApiProtectGET(path: "/accounts/me", method: methodsHTTP.GET)
+
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+       
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 200 else {
+            print("Error en la peticion")
+            return nil}
+        print("peticion", response.statusCode)
+        let detailResponde = try JSONDecoder().decode(responseTransferList.self, from: data)
+        print("doceode \(detailResponde)")
+        return detailResponde
+    }
     
+    func updateUser(user:UserReq) async throws -> updateUserResp?{
+        let response  = try await CentralBankAPI2().connectApi(path: "/users", method: methodsHTTP.PATCH, body: user)
+        guard let (data, response) = response else {
+            print("fue nil")
+            return nil
+        }
+        
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 200 else {
+            print("Error en la peticion")
+            return nil}
+        let loginResponse = try JSONDecoder().decode(updateUserResp.self, from: data)
+        print(loginResponse)
+        return loginResponse
+    }
     
     let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
     // Con @scaping ignora los errores
