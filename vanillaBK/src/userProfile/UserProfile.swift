@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ModalView
 
 struct UserProfile: View {
     let gradient = Gradient(colors: [.blue, .purple])
@@ -25,7 +26,7 @@ struct UserProfile: View {
                         VStack {
                             
                             Text("Hola \(userName)").font(.system(size: 25))
-                            Text(String(121233123)).font(.system(size: 27))
+                            Text(String(cardDetail?.card ?? "123")).font(.system(size: 27))
                         }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
                       
                         
@@ -33,13 +34,21 @@ struct UserProfile: View {
                             Text("Edit profile").foregroundColor(.black).italic().bold().padding(.top, 8)
                             Spacer()
                             
-                            NavigationLink(destination:EditUserData()){
-                                Image(systemName: "pencil").resizable()
-                                                                .aspectRatio(contentMode: .fill)
-                                                                .frame(width: 25, height: 25).colorMultiply(.black)
-                            }
+                            ModalPresenter {
+                                ModalLink(destination: EditUserData(username: userName,
+                                                                    last_name: item?.lastname ?? "My last name",
+                                                                    email: item?.email ?? "My email",
+                                                                    phone: item?.phone ?? "My phone",
+                                                                   account: cardDetail?.card ?? "123")) {
+                                           
+                                                Image(systemName: "pencil").resizable()
+                                                                                .aspectRatio(contentMode: .fill)
+                                                                                .frame(width: 25, height: 25).colorMultiply(.black)
+                                    }
+                        }
+                                }
                             
-                        }.padding(20)
+                            
                         
                         HStack{
                             HStack{
@@ -63,9 +72,12 @@ struct UserProfile: View {
                         
                         
                     }
+                  
                     Spacer()
                 
                 }
+                
+                
                 Spacer()
                 
                  
