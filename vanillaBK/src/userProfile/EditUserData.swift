@@ -16,6 +16,7 @@ struct EditUserData: View {
     @State  var email: String = ""
     @State  var phone: String = ""
     @State  var account: String = ""
+    @State  var rfc: String = ""
     
 
     var body: some View {
@@ -48,6 +49,11 @@ struct EditUserData: View {
                     .cornerRadius(14).padding(.top, 15.0)
                 
                 TextField("New Email", text: $email)
+                    .padding(15)
+                    .frame(width: 320, height: 50)
+                    .background(Color.white.opacity(0.6))
+                    .cornerRadius(14).padding(.top, 15.0)
+                TextField("New RFC", text: $rfc)
                     .padding(15)
                     .frame(width: 320, height: 50)
                     .background(Color.white.opacity(0.6))

@@ -39,7 +39,9 @@ struct UserProfile: View {
                                                                     last_name: item?.lastname ?? "My last name",
                                                                     email: item?.email ?? "My email",
                                                                     phone: item?.phone ?? "My phone",
-                                                                   account: cardDetail?.card ?? "123")) {
+                                                                    account: cardDetail?.card ?? "123",
+                                                                    rfc: item?.rfc ?? "My RFC"
+                                                                   )) {
                                            
                                                 Image(systemName: "pencil").resizable()
                                                                                 .aspectRatio(contentMode: .fill)
