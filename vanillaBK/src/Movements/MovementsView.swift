@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ModalView
 
 struct movements: Identifiable {
     let id = UUID()
@@ -45,12 +46,16 @@ struct MovementsView: View {
                Text("Transferencias")
                 //lista
                 List(data){transfer in
-                    NavigationLink(destination: DetailMovementView(item:transfer)){
-                        HStack{
-                            Text("$ "+String( transfer.amount))
-                        }.padding(10)
-                            .background(.blue.opacity(0.25))
-                        
+                    ModalPresenter{
+                        ModalLink(destination: TransferencesDetail(item:transfer)){
+                            HStack(){
+                                Spacer()
+                                Image(systemName: "checkmark.circle.fill")
+                                Text("$ "+String( transfer.amount))
+                                Spacer()
+                            }.padding(10)
+                                .background(.blue.opacity(0.25))
+                        }
                     }.scrollContentBackground(.hidden)
                 }
             }
@@ -59,28 +64,44 @@ struct MovementsView: View {
             Task{
                 do {
                     let rs = try await APIBK().getTransfers()
-                    if let result = rs?.status{
-                        
-                      print("peticion exitosa" + result)
+                    if let result = rs{
+                        data = result.data
+                        print("peticion exitosa" + result.status)
                     }
                 }catch{
                     print("Erro al traer lista")
                 }
-                
             }
-            
-            
         }
     }
 }
 
 struct DetailMovementView: View{
     let item: Transfer
+    @State private var data: detailTransfer?
+    
     var body: some View{
         VStack{
             Text(String( item.amount))
+            if let detail = data{
+                Text(detail.sender_account)
+            } else {
+                Text("Erro al obtener datos, intentelo nuevamente")
+            }
             
-        }
+        }.onAppear{
+            
+            Task{
+                do {
+                    let rs = try await APIBK().getDetailTransfer(id: item.id)
+                    if let result = rs{
+                        data = result.data
+                        print("peticion exitosa" + result.status)
+                    }
+                }catch{
+                    print("Erro al traer lista")
+                }
+            }}
     }
 }
 

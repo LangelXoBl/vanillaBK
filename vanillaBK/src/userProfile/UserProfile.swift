@@ -70,7 +70,17 @@ struct UserProfile: View {
                                 
                             }.padding(11)
                         }.background(Color .blue .opacity(0.6)).cornerRadius(10)
-                        Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up")
+                        Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up").onTapGesture{
+                            
+                                
+                                let save = UserDefaults.standard.bool(forKey: "save")
+                                print(save)
+                                        if(!save){
+                                    UserDefaults.standard.set("a", forKey: "user")
+                                    UserDefaults.standard.set("a", forKey: "pass")}
+                            
+                        }
+                        
                         
                         
                     }

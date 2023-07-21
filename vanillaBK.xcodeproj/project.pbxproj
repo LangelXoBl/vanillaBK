@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5D41D02A6A0FDB00DE07DA /* TransferencesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D41CF2A6A0FDB00DE07DA /* TransferencesDetail.swift */; };
 		0BB5B6702A60C08A0017806B /* Entitys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5B66F2A60C08A0017806B /* Entitys.swift */; };
 		130AB0F22A1C45AC00FD0B69 /* vanillaBKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB0F12A1C45AC00FD0B69 /* vanillaBKApp.swift */; };
 		130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130AB0F32A1C45AC00FD0B69 /* ContentView.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B5D41CF2A6A0FDB00DE07DA /* TransferencesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferencesDetail.swift; sourceTree = "<group>"; };
 		0BB5B66F2A60C08A0017806B /* Entitys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entitys.swift; sourceTree = "<group>"; };
 		130AB0EE2A1C45AC00FD0B69 /* vanillaBK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vanillaBK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130AB0F12A1C45AC00FD0B69 /* vanillaBKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vanillaBKApp.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				8B7505EB2A29728C00937D09 /* MovementsView.swift */,
 				8B7506032A297A9900937D09 /* Movement.swift */,
 				8B7506052A297C4A00937D09 /* CentralBankAPI.swift */,
+				0B5D41CF2A6A0FDB00DE07DA /* TransferencesDetail.swift */,
 			);
 			path = Movements;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				8B7505F32A29728C00937D09 /* Dashboardview.swift in Sources */,
 				8B7505F82A29728C00937D09 /* UserProfile.swift in Sources */,
 				0BB5B6702A60C08A0017806B /* Entitys.swift in Sources */,
+				0B5D41D02A6A0FDB00DE07DA /* TransferencesDetail.swift in Sources */,
 				130AB0F42A1C45AC00FD0B69 /* ContentView.swift in Sources */,
 				8BE46C762A37E1B000AEDB1C /* MovementsView.example.swift in Sources */,
 				8B7505F62A29728C00937D09 /* MovementsView.swift in Sources */,

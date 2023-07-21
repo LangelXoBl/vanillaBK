@@ -156,22 +156,51 @@ class APIBK: ObservableObject{
     }
     
     func getTransfers() async throws  -> responseTransferList? {
-        let response  = try await CentralBankAPI2().connectApiProtectGET(path: "/accounts/me", method: methodsHTTP.GET)
+        do {
+                let response = try await CentralBankAPI2().connectApiProtectGET(path: "/transferences", method: methodsHTTP.GET)
+                        
+                    guard  let (data, response) = response else {
+                    print("Respuesta o data nula")
+                    return nil
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    print("Error en la peticion")
+                    return nil
+                }
 
-        guard let (data, response) = response else {
-            print("fue nil")
-            return nil
-        }
-        
-       
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode == 200 else {
-            print("Error en la peticion")
-            return nil}
-        print("peticion", response.statusCode)
-        let detailResponde = try JSONDecoder().decode(responseTransferList.self, from: data)
-        print("doceode \(detailResponde)")
-        return detailResponde
+                let detailResponse = try JSONDecoder().decode(responseTransferList.self, from: data)
+                print("decodificado: \(detailResponse)")
+                return detailResponse
+            } catch {
+                print("Error: \(error)")
+                return nil
+            }
+    }
+    
+    func getDetailTransfer(id: Int) async throws -> respoDetailTransfer?{
+        do {
+                let response = try await CentralBankAPI2().connectApiProtectGET(path: "/transferences/\(id)", method: methodsHTTP.GET)
+                        
+                    guard  let (data, response) = response else {
+                    print("Respuesta o data nula")
+                    return nil
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    print("Error en la peticion")
+                    return nil
+                }
+
+                let detailResponse = try JSONDecoder().decode(respoDetailTransfer.self, from: data)
+                print("decodificado: \(detailResponse)")
+                return detailResponse
+            } catch {
+                print("Error: \(error)")
+                return nil
+            }
     }
     
     func updateUser(user:UserReq) async throws -> updateUserResp?{
