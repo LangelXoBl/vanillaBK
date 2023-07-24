@@ -43,7 +43,7 @@ struct MovementsView: View {
     var body: some View {
         NavigationView{
             VStack{
-               Text("Transferencias")
+                Text("Transferencias").padding(.top , (20))
                 //lista
                 List(data){transfer in
                     ModalPresenter{
