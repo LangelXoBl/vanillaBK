@@ -21,47 +21,39 @@ struct Dashboardview: View {
             VStack {
                 
                 ZStack{
-                    Text("Vanilla BK").foregroundColor(Color .blue).font(.system(size: 54) .italic()).padding(0.1).offset(x:0,y: -150)
-                   
+                    Text("Vanilla BK").font(.system(size: 54)).padding(0.1).offset(x:0,y: -150)
                     ZStack {
                         
                         HStack{
-                            CardView(atributo :"Balance: ", data: dataUser?.balance ?? 0,cta: card?.card ?? "XXXXXXXX")
-                            Image("money-bag").resizable() .frame(width: 90, height:90)
-                        }.frame(width: 320.0, height: 180.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20)
+                            CardView(atributo :"Balance: ", data: dataUser?.balance ?? 0,cta: card?.card ?? "XX-XX-XX-XX")
+                        }.frame(width: 320.0, height: 180.0).padding(17).background(Color .white).cornerRadius(20)
                         
                         VStack{
-                            Text("Realizar trasferencia")
+                            Text("Realizar trasferencia").fontWeight(.bold)
                             NavigationLink(destination: TransferView()){
                                 
                                 
                                 HStack{
-                                    Image("money").resizable() .frame(width: 70, height:70)
-                                    Image("transfers").resizable() .frame(width: 70, height:70)
-                                    Image("money").resizable() .frame(width: 70, height:70)
-                                    Image("transfers").resizable() .frame(width: 70, height:70)
+                                 
+                                    Image("transfers").resizable() .frame(width: 50, height:50)
                                 }
                             }
                             
-                        }.frame(width: 320.0, height: 100.0).padding(17).background(Color .blue.opacity(0.6)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:190)
+                        }.frame(width: 320.0, height: 90.0).padding(17).background(Color .white).cornerRadius(20).offset(x: 0,y:190)
                         
                         VStack{
-                            Text("Trasferencias")
-                            MovementsView().frame(width: 320.0, height: 270.0).cornerRadius(30)
-                        }.frame(width: 320.0, height: 270.0).padding(17).background(Color .blue.opacity(0.5)).foregroundColor(.white).cornerRadius(20).offset(x: 0,y:420)
+                            MovementsView().frame(width: 355.0, height: 270.0).cornerRadius(30).padding(.top, (0))
+                        }.frame(width: 310.0, height: 270.0).padding(20).cornerRadius(20).offset(x: 0,y:420)
                     }
                     
-                        
-                        
-                    HStack{
-                        
-                        NavigationLink(destination: UserProfile(item: user, cardDetail: card)){
-                            Text("! Hola \(userName) ¡").foregroundColor(Color .white ).font(.system(size: 25)).italic()
-                            Image("user").resizable()
-                                .frame(width: 35, height:35)
-                        }.offset(x:0,y:-80)}
 
                     }
+                HStack{
+                        NavigationLink(destination: UserProfile(item: user, cardDetail: card)){
+                            Text("Hola,  \(userName) ").font(.system(size: 25)).foregroundColor(Color.black)
+                            Image("user").resizable()
+                                .frame(width: 35, height:35)
+                        }.offset(x:0,y:-240)}
                     
                 
                 
@@ -116,17 +108,17 @@ struct CardView: View {
         HStack{
            
             VStack{
-                Spacer()
+            
                 HStack{
-                    Text(texto).font(.system(size: 15) .italic())
-                    Text("$"+String(dta)).font(.system(size: 15).bold())
-                }
-                Spacer()
-                Text(ctaa).font(.system(size: 14))
-            }.padding(5)
+                    Text(texto).font(.system(size: 15))
+                    Text("$"+String(dta)).font(.system(size: 18).bold())
+                }.padding(.bottom, (10))
+                
+                Text(ctaa).font(.system(size: 18))
+            }
             Spacer()
             
-        }.padding(25).foregroundColor(.white)
+        }.padding(25)
         
     }
     
