@@ -27,13 +27,11 @@ struct UserProfile: View {
                             
                             Text("Hola \(userName)").font(.system(size: 25))
                             Text(String(cardDetail?.card ?? "123")).font(.system(size: 27))
-                        }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
+                        }.frame(width: 320, height: 150).background(Color .blue .opacity(0.6)).cornerRadius(20)
                       
                         
                         HStack{
-                            Text("Edit profile").foregroundColor(.black).italic().bold().padding(.top, 8)
-                            Spacer()
-                            
+                            Text("Edit profile").foregroundColor(.black).italic().bold().padding(15)
                             ModalPresenter {
                                 ModalLink(destination: EditUserData(username: userName,
                                                                     last_name: item?.lastname ?? "My last name",
@@ -45,10 +43,10 @@ struct UserProfile: View {
                                            
                                                 Image(systemName: "pencil").resizable()
                                                                                 .aspectRatio(contentMode: .fill)
-                                                                                .frame(width: 25, height: 25).colorMultiply(.black)
+                                                                                .frame(width: 20, height: 20).colorMultiply(.black)
                                     }
                         }
-                                }
+                        }.frame(width: 320, height: 50).background(Color .white .opacity(0.6)).cornerRadius(14).padding(8)
                             
                             
                         
@@ -57,21 +55,27 @@ struct UserProfile: View {
                                 Card(atributo :"Last name", data: item?.lastname ?? "test", iconn: "key")
                                 Card(atributo :"key", data:  cardDetail?.card_account ?? "card_account", iconn: "key")
                                 
-                            }.padding(11)
-                        }.background(Color .blue).cornerRadius(10)
+                            }.padding(11).frame(width: 320, height: 100)
+                        }.background(Color.white.opacity(0.6)).cornerRadius(10)
                         
                         VStack{
                             
                             VStack{
-                                Bottom(atributo :"phone", data:item?.phone ?? "na", icon: "phone")
-                                Bottom(atributo :"email", data: item?.email ?? "AksqQhadydg7TRdfgUIJH", icon: "mail")
-                                Bottom(atributo :"Key", data: cardDetail?.card_account ?? "loding" , icon: "key")
+                                Bottom(atributo :"phone", data:item?.phone ?? "na", icon: "phone").frame(width: 320, height: 50)
+                                    .background(Color.white.opacity(0.6))
+                                    .cornerRadius(14).padding(.top, 15.0)
+                                Bottom(atributo :"email", data: item?.email ?? "AksqQhadydg7TRdfgUIJH", icon: "mail").frame(width: 320, height: 50)
+                                    .background(Color.white.opacity(0.6))
+                                    .cornerRadius(14).padding(.top, 15.0)
+                                Bottom(atributo :"Key", data: cardDetail?.card_account ?? "loding" , icon: "key").frame(width: 320, height: 50)
+                                    .background(Color.white.opacity(0.6))
+                                    .cornerRadius(14).padding(.top, 15.0)
                                 
                                 
                             }.padding(11)
-                        }.background(Color .blue .opacity(0.6)).cornerRadius(10)
-                        Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up").onTapGesture{
-                            
+                        }.cornerRadius(10)
+                        
+                        BottomSingout(atributo :"Sing out", data:"").onTapGesture{
                                 
                                 let save = UserDefaults.standard.bool(forKey: "save")
                                 print(save)
@@ -133,7 +137,7 @@ struct Card: View {
             }.padding(5)
             Spacer()
             
-        }.padding(20).background(Color .black .opacity(0.3)).foregroundColor(.white).cornerRadius(10)
+        }.padding(20).cornerRadius(10)
         
     }
     
@@ -164,13 +168,40 @@ struct Bottom: View {
             }
             Spacer()
             
-        }.padding(25).background(Color .black .opacity(0.8)).foregroundColor(.white).cornerRadius(20)
+        }.padding(25).cornerRadius(20)
         
     }
     
     
 }
-
+struct BottomSingout: View {
+    var texto: String
+    var dta : String
+  
+    
+    init(atributo :String, data: String){
+        self.texto = atributo
+        self.dta = data
+     
+    }
+    var body: some View {
+       
+        HStack{
+            
+            HStack{
+                Text(texto)
+                Text(dta)
+            }.fontWeight(.bold)
+                .frame(width: 320, height: 50)
+                .foregroundColor(.black)
+                .background(
+                     Color(red: 0.5098039215686274, green: 0.5803921568627451, blue: 0.7686274509803922 , opacity: 1.0)
+                ).cornerRadius(14)
+        }
+    }
+    
+    
+}
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
         
