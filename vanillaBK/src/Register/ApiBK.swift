@@ -33,7 +33,7 @@ struct DataRes: Codable{
     var phone:String
     var password: String
     var id_bank:Int
-    var id: Int
+    var id: Int	
 }
 
 struct Errors: Codable {
@@ -138,21 +138,27 @@ class APIBK: ObservableObject{
     }
     
     func newTransfer(body: NewTransfer) async throws -> Responsetransfer? {
-        let response = try await CentralBankAPI2().connectApi(path: "/transferences", method: methodsHTTP.POST, body: body)
-        guard let (data, response) = response else {
-            print("fue nil")
+        do {
+            let response = try await CentralBankAPI2().connectApi(path: "/transferences", method: methodsHTTP.POST, body: body)
+            guard let (data, response) = response else {
+                print("fue nil")
+                return nil
+            }
+            
+            
+            guard let response = response as? HTTPURLResponse
+                   else {
+                print("Error en la peticion")
+                return nil}
+            
+            let dataRes = try JSONDecoder().decode(Responsetransfer.self, from: data)
+            print("docode \(dataRes)")
+            return dataRes
+        }
+        catch {
+            print("Error: \(error)")
             return nil
         }
-        
-       
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode == 201 else {
-            print("Error en la peticion")
-            return nil}
-        
-        let dataRes = try JSONDecoder().decode(Responsetransfer.self, from: data)
-        print("docode \(dataRes)")
-        return dataRes
     }
     
     func getTransfers() async throws  -> responseTransferList? {
@@ -218,7 +224,7 @@ class APIBK: ObservableObject{
         print(loginResponse)
         return loginResponse
     }
-    
+    // Deprecated
     let url_base = "https://c2df-187-188-58-190.ngrok-free.app"
     // Con @scaping ignora los errores
     // se le pasa el callback que retornara el response

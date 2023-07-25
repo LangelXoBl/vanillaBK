@@ -20,7 +20,7 @@ struct NewTransfer: Codable {
 }
 
 struct Responsetransfer: Codable {
-    var status: String
+    var status: String?
     var message: String
     var data: DataResponseTransfer?
     var error: String?

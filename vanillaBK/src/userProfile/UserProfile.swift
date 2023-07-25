@@ -103,6 +103,30 @@ struct UserProfile: View {
                 
                 print(userName)
             }
+        }.onAppear{
+            Task{
+                do {
+                    let rs = try await APIBK().getUserData()
+                    if let result = rs?.message {
+                        print(result)
+                    }
+                    if let data = rs?.data {
+                        print(data)
+                        cardDetail = data.card[0]
+                        item = data.user
+                        //user = data.user
+                        userName = data.user.name
+                        
+                        //if let account = card?.card{
+                        //    UserDefaults.standard.set(account, forKey: "nCount")
+                        //}
+                    }
+                }catch{
+                    print("Erro al cread")
+                }
+                
+            }
+            
         }
        
         

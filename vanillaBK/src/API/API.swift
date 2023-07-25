@@ -25,7 +25,7 @@ class CentralBankAPI2: ObservableObject{
     @Published var movements = [movement]()
     let token = UserDefaults.standard.string(forKey: "token") ?? "NA"
     
-    let url_base = "https://547f-187-188-58-190.ngrok-free.app"
+    let url_base = "https://07ad-187-188-58-190.ngrok-free.app"
     
     func connectApi<T: Encodable >(path: String, method:methodsHTTP , body: T)async throws -> (Data, URLResponse)? {
         // se valida el url

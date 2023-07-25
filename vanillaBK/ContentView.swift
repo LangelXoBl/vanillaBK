@@ -28,7 +28,7 @@ struct ContentView: View {
                         UserDefaults.standard.set("a", forKey: "user")
                         UserDefaults.standard.set("a", forKey: "pass")}
                 }
-                NavView()
+                NavView(isAuth: $auth)
             }
         }
         

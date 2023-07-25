@@ -17,6 +17,7 @@ struct EditUserData: View {
     @State  var phone: String = ""
     @State  var account: String = ""
     @State  var rfc: String = ""
+    @State var message: String?
     
 
     var body: some View {
@@ -58,6 +59,11 @@ struct EditUserData: View {
                     .frame(width: 320, height: 50)
                     .background(Color.white.opacity(0.6))
                     .cornerRadius(14).padding(.top, 15.0)
+                if let res = message {
+                    Text(res)
+                }else{
+                    Text(message ?? "").foregroundColor(.red)
+                }
                 
                 Button("Enviar")
                 {
@@ -65,10 +71,12 @@ struct EditUserData: View {
                         do{
                             let rs = try await APIBK().updateUser(user: UserReq(name: username, lastname: last_name, email: email, rfc: rfc, phone: phone, password: "pass", id_bank: 10))
                             
-                            if let affected = rs?.affected{
+                            if (rs?.affected) != nil{
+                                message = "Update Exitoso"
                                 print("update Exitoso")
                             }
                         }catch{
+                            message = "Ocurrio un error"
                             print("Error al actualizar")
                         }
                     }

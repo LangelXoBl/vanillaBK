@@ -60,7 +60,7 @@ struct TransferView: View {
                                 let rs = try await APIBK().newTransfer(body: NewTransfer(user_account: userAccount, receptor_account: cuentaDestino, amount: importe))
                                 if let result = rs?.message {
                                     message = result
-                                }else {message = "No account associated to user" }
+                                }
                                 if let data = rs?.data {
                                     ntf.body = "Envio de $ \(data.amount) Exitoso, a la tarjeta: \(cuentaDestino)"
                                     ntf.showNotification()

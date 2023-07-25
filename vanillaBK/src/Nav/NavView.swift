@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NavView: View {
+    @Binding var isAuth: Bool
     var body: some View {
         TabView{
             Dashboardview().tabItem{
@@ -18,13 +19,23 @@ struct NavView: View {
                 Image(systemName: "arrow.up.right.and.arrow.down.left.rectangle.fill")
                 Text("movimeinto")
             }
+            UserProfile().tabItem{
+                Image(systemName: "person")
+                Text("My Perfil")
+            }
+            
         }
     }
 }
 
+struct other: View{
+    var body: some View{
+        Text("NavView")
+    }
+}
 
 struct NavView_Previews: PreviewProvider {
     static var previews: some View {
-        NavView()
+        other()
     }
 }
