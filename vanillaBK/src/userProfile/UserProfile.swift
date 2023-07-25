@@ -14,7 +14,7 @@ struct UserProfile: View {
    @State var item: DataRes?
   @State var userName: String = "Anonimous"
     @State var cardDetail : CardUser?
-    
+    @Binding var isAuth: Bool
     
     var body: some View {
         NavigationView(){
@@ -28,7 +28,7 @@ struct UserProfile: View {
                             Text("Hola \(userName)").font(.system(size: 25))
                             Text(String(cardDetail?.card ?? "123")).font(.system(size: 27))
                         }.frame(width: 350, height: 170).background(Color .blue .opacity(0.6)).cornerRadius(20)
-                      
+                        
                         
                         HStack{
                             Text("Edit profile").foregroundColor(.black).italic().bold().padding(.top, 8)
@@ -42,15 +42,15 @@ struct UserProfile: View {
                                                                     account: cardDetail?.card ?? "123",
                                                                     rfc: item?.rfc ?? "My RFC"
                                                                    )) {
-                                           
-                                                Image(systemName: "pencil").resizable()
-                                                                                .aspectRatio(contentMode: .fill)
-                                                                                .frame(width: 25, height: 25).colorMultiply(.black)
-                                    }
-                        }
+                                    
+                                    Image(systemName: "pencil").resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 25, height: 25).colorMultiply(.black)
                                 }
-                            
-                            
+                            }
+                        }
+                        
+                        
                         
                         HStack{
                             HStack{
@@ -72,21 +72,21 @@ struct UserProfile: View {
                         }.background(Color .blue .opacity(0.6)).cornerRadius(10)
                         Bottom(atributo :"Sing out", data:"", icon: "square.and.arrow.up").onTapGesture{
                             
-                                
-                                let save = UserDefaults.standard.bool(forKey: "save")
-                                print(save)
-                                        if(!save){
-                                    UserDefaults.standard.set("a", forKey: "user")
-                                    UserDefaults.standard.set("a", forKey: "pass")}
+                            isAuth = false
+                            let save = UserDefaults.standard.bool(forKey: "save")
+                            print(save)
+                            if(!save){
+                                UserDefaults.standard.set("a", forKey: "user")
+                                UserDefaults.standard.set("a", forKey: "pass")}
                             
                         }
                         
                         
                         
                     }
-                  
+                    
                     Spacer()
-                
+                    
                 }
                 
                 
@@ -199,9 +199,15 @@ struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
         
         VStack{
-            UserProfile()
+            UserProfile(isAuth: .constant(true))
             
         }
         
+    }
+}
+
+struct uservie: View {
+    var body: some View{
+        Text("user vie")
     }
 }

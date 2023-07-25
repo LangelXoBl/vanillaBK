@@ -19,7 +19,7 @@ struct NavView: View {
                 Image(systemName: "arrow.up.right.and.arrow.down.left.rectangle.fill")
                 Text("movimeinto")
             }
-            UserProfile().tabItem{
+            UserProfile(isAuth: $isAuth).tabItem{
                 Image(systemName: "person")
                 Text("My Perfil")
             }
@@ -36,6 +36,6 @@ struct other: View{
 
 struct NavView_Previews: PreviewProvider {
     static var previews: some View {
-        other()
+        NavView(isAuth: .constant(true))
     }
 }

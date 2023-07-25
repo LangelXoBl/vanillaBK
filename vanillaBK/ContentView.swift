@@ -20,14 +20,6 @@ struct ContentView: View {
             if(!auth){
                 LoginView(isAuth: $auth)
             }else{
-                Button("Logout test"){
-                    auth = false
-                    let save = UserDefaults.standard.bool(forKey: "save")
-                    print(save)
-                            if(!save){
-                        UserDefaults.standard.set("a", forKey: "user")
-                        UserDefaults.standard.set("a", forKey: "pass")}
-                }
                 NavView(isAuth: $auth)
             }
         }

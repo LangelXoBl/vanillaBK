@@ -14,6 +14,7 @@ struct LogginButton: ButtonStyle {
 }
 
 struct LoginView: View {
+    @State private var message: String?
     @State private var username:
     String = UserDefaults.standard.string(forKey: "user") ?? ""
     @State private var password:
@@ -62,8 +63,9 @@ struct LoginView: View {
                                 .cornerRadius(14)
                     }.padding(4)
                     HStack{
-                        TextField("password", text: $password)
-                            .padding(15)
+                        SecureField(text: $password){
+                            Text("contraseña")
+                        }.padding(15)
                                 .frame(width: 320, height: 50)
                                 .background(Color.white.opacity(0.6))
                                 .cornerRadius(14)
@@ -74,6 +76,9 @@ struct LoginView: View {
                     Toggle(isOn: $faceId){
                         Text("Iniciar con id")
                     }.padding(.horizontal)
+                    if let result = message{
+                        Text(result).foregroundColor(.red)
+                    }
                     Button("Login"){
                         
                         print("tab")
@@ -82,6 +87,7 @@ struct LoginView: View {
                             do {
                                 let rs = try await APIBK().login(user: loginReq(phone: username, password: password))
                                 if let result = rs?.message {
+                                    message = result
                                     print(result)
                                 }
                                 if let token = rs?.access_token {
@@ -92,7 +98,7 @@ struct LoginView: View {
                             }catch{
                                 print("Erro al cread")
                             }
-                            
+                
                         }
                         
                         UserDefaults.standard.set(keep, forKey: "save")
@@ -103,7 +109,7 @@ struct LoginView: View {
                             UserDefaults.standard.set(password, forKey: "pass")}
                         if(!faceId){
                             UserDefaults.standard.set(faceId, forKey: "faceId")}
-                    }.fontWeight(.bold)
+                    }.disabled(false).fontWeight(.bold)
                         .padding(.top, 18.0)
                         .buttonStyle(LogginButton()).onAppear(){
                         //pide permiso
@@ -111,7 +117,7 @@ struct LoginView: View {
                         isAuth = false
                         if(faceId){
                             authenticate()}
-                    }
+                        }
                     NavigationLink(destination: RegisterView()){
                         Text("Register")
                     }
@@ -141,7 +147,7 @@ struct MainView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        //LoginView()
-        MainView()
+        LoginView(isAuth: .constant(true))
+        //MainView()
     }
 }
